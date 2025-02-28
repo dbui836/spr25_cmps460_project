@@ -4,7 +4,7 @@
 
 
 -- Initialize tables
-
+/*
 CREATE TABLE Pilot (
     pilotID INT PRIMARY KEY,
     pilot_fname VARCHAR(100) NOT NULL,
@@ -69,3 +69,4 @@ CREATE TABLE Passenger (
 
 );
 
+*/
