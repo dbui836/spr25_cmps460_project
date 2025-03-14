@@ -1,12 +1,16 @@
 <?php
-
+# getPilots.php, test script
 include("database.php");
 
-
+# Embedded sql to show entire pilot table
 $sql = "SELECT * from pilot";
 $result = $conn->query($sql);
 
+# if results not empty
 if ($result->num_rows > 0){
+    # Send back html code with tuple info
+
+    # Set up table headers
     echo "<table border='1'>
     <tr>
         <th>ID</th>
@@ -17,6 +21,7 @@ if ($result->num_rows > 0){
         <th>Consec Hrs Flown</th>
     </tr>";
 
+    # Fill each row
     while($row = $result->fetch_assoc()) {
     echo "<tr>
             <td>" . $row["pilotID"] . "</td>
