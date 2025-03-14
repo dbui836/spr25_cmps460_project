@@ -1,10 +1,10 @@
 -- Initialize database
 
---CREATE DATABASE UL_Airlines;
+-- CREATE DATABASE UL_Airlines;
 
 
 -- Initialize tables
-/*
+
 CREATE TABLE Pilot (
     pilotID INT PRIMARY KEY,
     pilot_fname VARCHAR(100) NOT NULL,
@@ -20,7 +20,6 @@ CREATE TABLE Plane (
 
     model VARCHAR(100) NOT NULL,
     reqCert ENUM("Student", "Recreational", "Private", "Commercial", "Airline Transport") NOT NULL,
-    pilot_location VARCHAR(100) NOT NULL,
     planeID INT PRIMARY KEY,
     plane_hrs_flown INT NOT NULL,
     max_capacity INT NOT NULL,
@@ -69,4 +68,3 @@ CREATE TABLE Passenger (
 
 );
 
-*/
