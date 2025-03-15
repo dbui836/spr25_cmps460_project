@@ -1,6 +1,9 @@
 <?php
-# getPilots.php, test script
-include("database.php");
+
+header("Content-Type: application/json");
+include("connect_db.php");
+
+
 
 # Embedded sql to show entire pilot table
 $sql = "SELECT * from pilot";
@@ -8,35 +11,21 @@ $result = $conn->query($sql);
 
 # if results not empty
 if ($result->num_rows > 0){
-    # Send back html code with tuple info
+    $pilots = [];
 
-    # Set up table headers
-    echo "<table border='1'>
-    <tr>
-        <th>ID</th>
-        <th>First Name</th>
-        <th>Last Name</th>
-        <th>Certification</th>
-        <th>Current Location</th>
-        <th>Consec Hrs Flown</th>
-    </tr>";
-
-    # Fill each row
-    while($row = $result->fetch_assoc()) {
-    echo "<tr>
-            <td>" . $row["pilotID"] . "</td>
-            <td>" . $row["pilot_fname"] . "</td>
-            <td>" . $row["pilot_lname"] . "</td>
-            <td>" . $row["certs"] . "</td>
-            <td>" . $row["pilot_location"] . "</td>
-            <td>" . $row["pilot_hrs_flown"] . "</td>
-        </tr>";
+    # Store all pilots in array
+    while ($row = $result->fetch_assoc()){
+        $pilots[] = $row;
     }
-    echo "</table>";
+    
+    # Send data as JSON
+    echo json_encode($pilots);
+
 } else {
-echo "0 results found.";  
+    echo json_encode([]);
 }
 
+# Close connection 
 $conn->close();
 
 ?>

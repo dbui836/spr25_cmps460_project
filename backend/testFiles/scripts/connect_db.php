@@ -11,8 +11,5 @@ $conn = new mysqli($host, $user, $password, $db);
 # Debug: Test if connection successful
 if ($conn-> connect_error) {
     die("Can't connect to the database: " . $conn->connect_error);
-} else{
-    echo "Database connection successful";
 }
-
 ?>
