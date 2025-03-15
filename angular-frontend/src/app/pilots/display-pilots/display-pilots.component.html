@@ -1,0 +1,22 @@
+<table border='1'>
+<tr>
+    <th>ID</th>
+    <th>First Name</th>
+    <th>Last Name</th>
+    <th>Certification</th>
+    <th>Current Location</th>
+    <th>Consec Hrs Flown</th>
+</tr>
+
+<tr *ngFor="let pilot of pilots">
+
+    <td>{{pilot.pilotID}}</td>
+    <td>{{pilot.pilot_fname}}</td>
+    <td>{{pilot.pilot_lname}}</td>
+    <td>{{pilot.certs}}</td>
+    <td>{{pilot.pilot_location}}</td>
+    <td>{{pilot.pilot_hrs_flown}}</td>
+
+</tr>
+</table>
+
