@@ -1,7 +1,7 @@
 <?php
 
-header('Access-Control-Allow-Origin: *');
-header("Content-Type: application/json");
+header('Access-Control-Allow-Origin: *'); // for development, angular runs on different port
+header("Content-Type: application/json"); // for json encoding
 include("../connect_db.php");
 
 
