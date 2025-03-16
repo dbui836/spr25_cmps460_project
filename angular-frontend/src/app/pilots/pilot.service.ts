@@ -12,7 +12,8 @@ export class PilotService {
 
   getAllPilots(): Observable<any[]>{
     const pilot_apiURL = 'http://localhost/spr25_cmps460_project/backend/api/pilot_APIs/getPilots.php';
-    return this.http.get<any[]>(pilot_apiURL); // GET request 
+    return this.http.get<any[]>(pilot_apiURL); // GET request to php API  
   }
 
+  // Can include more functions below
 }
