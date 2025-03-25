@@ -4,6 +4,7 @@
 
 
 -- Initialize tables
+
 CREATE TABLE Pilot (
 
     pltID INT AUTO_INCREMENT PRIMARY KEY,
@@ -29,7 +30,7 @@ CREATE TABLE PlaneModel (
 CREATE TABLE Plane (
 
     planeID INT AUTO_INCREMENT PRIMARY KEY,
-    modelID VARCHAR(100) NOT NULL,
+    modelID INT NOT NULL,
     hrs_flown INT NOT NULL,
     FOREIGN KEY (modelID) REFERENCES PlaneModel(modelID)
         ON DELETE RESTRICT
@@ -44,16 +45,16 @@ CREATE TABLE Flight (
     scr VARCHAR(100) NOT NULL,
     dest VARCHAR(100) NOT NULL,
     planeID INT NOT NULL,
-    pilot1_ID INT NOT NULL,
-    pilot2_ID INT,
+    plt1_ID INT NOT NULL,
+    plt2_ID INT,
 
     FOREIGN KEY (planeID) REFERENCES Plane(planeID)
         ON DELETE RESTRICT
     ,
-    FOREIGN KEY (pilot1_ID) REFERENCES Pilot(pilotID)
+    FOREIGN KEY (plt1_ID) REFERENCES Pilot(pltID)
         ON DELETE RESTRICT
     ,
-    FOREIGN KEY (pilot2_ID) REFERENCES Pilot(pilotID)
+    FOREIGN KEY (plt2_ID) REFERENCES Pilot(pltID)
         ON DELETE SET NULL
 
 );
@@ -64,7 +65,7 @@ CREATE TABLE Passenger (
 
     passID INT AUTO_INCREMENT PRIMARY KEY,
     pass_fname VARCHAR(100) NOT NULL,
-    pass_lname VARCHAR(100) NOT NULL,
+    pass_lname VARCHAR(100) NOT NULL
 
 );
 
