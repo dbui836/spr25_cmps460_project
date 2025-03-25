@@ -1,17 +1,22 @@
 <!--Basic Pilot Display Table -->
 <table border='1'>
-    <tr>
-        <!--Set up table headers -->
-        <th>ID</th>
-        <th>First Name</th>
-        <th>Last Name</th>
-        <th>Certification</th>
-        <th>Current Location</th>
-        <th>Consec Hrs Flown</th>
-    </tr>
+    <thead>
+        <tr>
+            <!--Set up table headers -->
+            <th>ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Certification</th>
+            <th>Current Location</th>
+            <th>Consec Hrs Flown</th>
+        </tr>
+    </thead>
 
+    <tbody>
     <!--Loop threw pilot row by row -->
-    <tr *ngFor="let pilot of pilots">
+    <tr *ngFor="let pilot of pilots" 
+    (click)="selectPilot(pilot)" 
+    [ngClass]="{'selected-row': selectedPilot === pilot}">
 
         <td>{{pilot.pilotID}}</td>
         <td>{{pilot.pilot_fname}}</td>
@@ -20,5 +25,6 @@
         <td>{{pilot.pilot_location}}</td>
         <td>{{pilot.pilot_hrs_flown}}</td>
     </tr>
+</tbody>
 </table>
 

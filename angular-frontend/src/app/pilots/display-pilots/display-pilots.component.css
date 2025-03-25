@@ -1,0 +1,31 @@
+thead {
+    background-color: lightblue; 
+    color: black; 
+    font-size: 18px;
+    font-weight: bold;
+  }
+
+.selected-row {
+    background-color: #c8e6c9; /* Light green background for selected row */
+    cursor: pointer;           /* Add pointer cursor to indicate interactivity */
+}
+  
+
+tbody tr:hover {
+   background-color: #f6c9c9; 
+}
+
+table {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: auto;
+    border-collapse: collapse;  /* Optional, removes spacing between cells */
+    width: 60%; /* Optional, adjust table width */
+}
+
+/* Center the text inside both header and data cells */
+th, td {
+    padding: 10px;
+    text-align: center;  /* Centers the text inside the cells */
+    border: 1px solid black;  /* Optional, adds a border to cells */
+}

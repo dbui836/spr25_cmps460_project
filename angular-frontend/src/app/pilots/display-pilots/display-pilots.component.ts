@@ -12,6 +12,7 @@ import { PilotService } from '../pilot.service';
 })
 export class DisplayPilotsComponent {
   pilots: any[] = []; 
+  selectedPilot: any | null = null;
 
   constructor(private pilotService: PilotService) {}
 
@@ -22,6 +23,11 @@ export class DisplayPilotsComponent {
 
     );
 
+  }
+
+
+  selectPilot(pilot: any): void {
+    this.selectedPilot = pilot;
   }
 
 }

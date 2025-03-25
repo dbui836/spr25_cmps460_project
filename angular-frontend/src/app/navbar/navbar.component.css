@@ -1,19 +1,23 @@
 ul {
-    margin: 0;
+    margin: 30px auto;
     padding: 0;
     overflow: hidden;
-    background: lightgray;
+    background: rgb(255, 123, 123);
+    border-radius: 40px;
+    width: 80%;
     list-style-type: none;
+    text-align: center;
 }
 li {
-    float: left;
+    display: inline-block;
 }
 a {
     text-decoration: none;
     padding: 10px 25px;
     display: block;
     color: black;
+    font-weight: bold;
 }
 li:hover {
-    background: gray;
+    background: rgb(254, 167, 167);
 }
