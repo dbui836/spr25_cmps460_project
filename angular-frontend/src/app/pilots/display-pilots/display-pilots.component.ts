@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PilotService } from '../pilot.service';
 
@@ -12,7 +12,9 @@ import { PilotService } from '../pilot.service';
 })
 export class DisplayPilotsComponent {
   pilots: any[] = []; 
-  selectedPilot: any | null = null;
+  selectedPilotID: number | null = null; // to color the selected pilot
+
+  @Output() curr_pilot = new EventEmitter<number>(); // to emit ID for edit-delete
 
   constructor(private pilotService: PilotService) {}
 
@@ -25,9 +27,9 @@ export class DisplayPilotsComponent {
 
   }
 
-
-  selectPilot(pilot: any): void {
-    this.selectedPilot = pilot;
+  selectPilot(pilotID: number): void {
+    this.selectedPilotID = pilotID;
+    this.curr_pilot.emit(pilotID); // emit selected pilotID to parent component
   }
 
 }

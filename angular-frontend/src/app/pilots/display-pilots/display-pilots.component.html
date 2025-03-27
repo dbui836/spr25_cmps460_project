@@ -15,15 +15,15 @@
     <tbody>
     <!--Loop threw pilot row by row -->
     <tr *ngFor="let pilot of pilots" 
-    (click)="selectPilot(pilot)" 
-    [ngClass]="{'selected-row': selectedPilot === pilot}">
+    (click)="selectPilot(pilot.pltID)" 
+    [ngClass]="{'selected-row': selectedPilotID === pilot.pltID}">
 
-        <td>{{pilot.pilotID}}</td>
-        <td>{{pilot.pilot_fname}}</td>
-        <td>{{pilot.pilot_lname}}</td>
-        <td>{{pilot.certs}}</td>
-        <td>{{pilot.pilot_location}}</td>
-        <td>{{pilot.pilot_hrs_flown}}</td>
+        <td>{{pilot.pltID}}</td>
+        <td>{{pilot.plt_fname}}</td>
+        <td>{{pilot.plt_lname}}</td>
+        <td>{{pilot.license}}</td>
+        <td>{{pilot.plt_location}}</td>
+        <td>{{pilot.consec_hrs_flown}}</td>
     </tr>
 </tbody>
 </table>

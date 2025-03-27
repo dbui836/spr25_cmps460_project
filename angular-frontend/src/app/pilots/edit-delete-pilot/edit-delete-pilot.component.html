@@ -1,0 +1,40 @@
+<!-- Update Pilot Form -->
+<h1>Edit Pilot Information</h1>
+<pre>{{ pilot | json }}</pre> <!-- debug -->
+<form (ngSubmit)="updatePilot()">
+  <div *ngIf="pilot">
+    <!-- Pilot ID, int (CAN'T CHANGE) -->
+    <label for="pltID">ID:</label>
+    <input type="text" id="pltID" [(ngModel)]="pilot.pltID" name="pltID" disabled />
+
+    <!-- Pilot first name, string -->
+    <label for="plt_fname">First Name:</label>
+    <input type="text" id="plt_fname" [(ngModel)]="pilot.plt_fname" name="plt_fname" />
+
+    <!-- Pilot last name, string -->
+    <label for="plt_lname">Last Name:</label>
+    <input type="text" id="plt_lname" [(ngModel)]="pilot.plt_lname" name="plt_lname" />
+
+    <!-- Pilot license, choose from preset options -->
+    <label for="certification">Certification:</label>
+    <select id="certification" [(ngModel)]="pilot.license" name="license">
+      <option value="Student">Student</option>
+      <option value="Recreational">Recreational</option>
+      <option value="Private">Private</option>
+      <option value="Commercial">Commercial</option>
+      <option value="Airline Transport">Airline Transport</option>
+    </select>
+
+    <!-- Pilot location, string -->
+    <label for="plt_location">Current Location:</label>
+    <input type="text" id="plt_location" [(ngModel)]="pilot.plt_location" name="plt_location" />
+
+    <!-- Consecutive Hours Flown, make sure number and has min value 0 -->
+    <label for="consec_hrs_flown">Consecutive Hours Flown:</label>
+    <input type="number" id="consec_hrs_flown" [(ngModel)]="pilot.consec_hrs_flown" name="consec_hrs_flown" min="0" />
+
+
+    <button type="submit">Update</button>
+  </div>
+</form>
+
