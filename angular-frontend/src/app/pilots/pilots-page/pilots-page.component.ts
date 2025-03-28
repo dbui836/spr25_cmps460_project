@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
 import { DisplayPilotsComponent } from '../display-pilots/display-pilots.component';
 import { EditDeletePilotComponent } from '../edit-delete-pilot/edit-delete-pilot.component';
+import { RouterLink } from '@angular/router';
+
 
 @Component({
   selector: 'app-pilots-page',
-  imports: [DisplayPilotsComponent, EditDeletePilotComponent],
+  imports: [DisplayPilotsComponent, EditDeletePilotComponent, RouterLink],
   templateUrl: './pilots-page.component.html',
   styleUrl: './pilots-page.component.css'
 })
