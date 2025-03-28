@@ -18,3 +18,22 @@
   .button:active {
     background-color: rgb(255, 217, 0);
   }
+
+  .container {
+    display: flex;
+    gap: 100px;  
+    align-items: flex-start;         /* Align the components to the top */
+    flex-wrap: wrap;                 /* Allow components to wrap if the screen is too small */
+  }
+  
+  /* Styling the Display Pilots component (table) */
+  app-display-pilots {
+    flex: 2; /* Takes up more space compared to the other components */
+    width: 50%; /* Ensure it doesn’t become too narrow */
+  }
+
+  app-edit-delete-pilot {
+    flex: 1.25;  /* Takes up less space compared to the table */
+    width: 100%; /* Ensure it doesn’t become too narrow */
+  }
+  

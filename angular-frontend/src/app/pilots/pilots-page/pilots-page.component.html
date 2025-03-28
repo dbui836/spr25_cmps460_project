@@ -1,9 +1,10 @@
 
-
+<div class="container">
 <app-display-pilots (curr_pilot)="OnPilotSelected($event)"></app-display-pilots>
 
-<a routerLink="/createPilot" class="button">Create Pilot</a>
+
 
 
 <app-edit-delete-pilot [edit_delete_pilotID]="selectedPilotID"></app-edit-delete-pilot>
-
+</div>
+<a routerLink="/createPilot" class="button">Create Pilot</a>
