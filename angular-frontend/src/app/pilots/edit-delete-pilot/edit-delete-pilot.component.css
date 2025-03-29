@@ -3,36 +3,70 @@
     justify-content: flex-start;
     align-items: flex-start;
     
-  }
+}
 
-  .form-field {
-    margin-bottom: 15px; 
-  }
   
-  /* Styling the form */
-  form {
-    width: 50%; /* Adjust width as necessary */
+.form-field {
+    margin-bottom: 15px;   
+}
+  
+  
+form {
+    width: 50%; 
     padding: 20px;
     border: 1px solid black;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    background-color: #fff;
+    background-color: whitesmoke;
     flex-direction: column;
-  }
+}
 
-  form label {
-    display: block; /* Make label take full width */
+form label {
+    display: block; 
     margin-bottom: 5px;
     font-weight: bold;
-  }
+}
 
-  form input,
+form input,
 form select,
 form button {
-  width: 100%; /* Full width */
-  padding: 10px;
-  font-size: 16px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box; /* Include padding and border in element's total width/height */
+    width: 100%; 
+    padding: 10px; 
+    font-size: 16px;
+    border: 1px solid black;
+    border-radius: 9px;
+    box-sizing: border-box; 
+}
+
+
+form button:hover[type="submit"] {
+    background-color: #c8e6c9; 
+    color: black;               
+    transform: scale(1.05);    
+}
+  
+
+form button:active[type="submit"] {
+    background-color: rgb(59, 140, 63); 
+    transform: scale(0.95);    
+}
+
+form button:hover[type="button"] {
+    background-color: #ed8787; 
+    color: black;               
+    transform: scale(1.05);    
+}
+  
+
+form button:active[type="button"] {
+    background-color: #b73838; 
+    transform: scale(0.95);    
+}
+
+
+
+.form-actions {
+    display: flex;          /* Makes the container a flexbox */
+    gap: 10px;              /* Adds space between the buttons */
+    justify-content: flex-start; /* Align buttons to the left */
 }

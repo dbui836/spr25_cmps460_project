@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, EventEmitter, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PilotService } from '../pilot.service';
 import { SimpleChanges } from '@angular/core';
@@ -15,8 +15,13 @@ export class EditDeletePilotComponent {
   @Input() edit_delete_pilotID: number | null = null; // recieve selected pilotID
   pilot: any = {}; // store pilot info to be displayed in form
 
+  count: number = 0;
+  @Output() tableChanged = new EventEmitter<number>(); // to emit count++ for display when table changed
+
 
   constructor(private pilotService: PilotService) { }
+
+
 
   // when edit_delete_pilotID changes, update the form
   ngOnChanges(changes: SimpleChanges): void {
@@ -42,12 +47,39 @@ export class EditDeletePilotComponent {
     if (this.pilot && this.pilot.pltID) {
       
       console.log('Pilot to update:', this.pilot); // debug info
-      this.pilotService.updatePilotByID(this.pilot).subscribe(
+      this.pilotService.updatePilot(this.pilot).subscribe(
         response => {
+          this.count += 1;
+          this.tableChanged.emit(this.count);
           alert('Pilot updated successfully!'); // use native browser alert to display status
         },
         error => {
           alert('Error updating pilot.');
+        }
+      );
+    }
+  }
+
+  deletePilot(): void{
+    if (this.pilot && this.pilot.pltID) {
+      
+      this.pilotService.deletePilotByID(Number(this.pilot.pltID)).subscribe(
+        response => {
+          // Clears form of old pilot info
+          this.pilot.pltID = null; // disable button pressing until new pilot selected
+          this.pilot.plt_fname = '';
+          this.pilot.plt_lname = '';
+          this.pilot.license = '';
+          this.pilot.plt_location = '';
+          this.pilot.consec_hrs_flown = null;
+
+          // signal to refresh table
+          this.count += 1;
+          this.tableChanged.emit(this.count);
+          alert('Deletion success ! Congratulation, you just made a pilot homeless ! '); // use native browser alert to display status
+        },
+        error => {
+          alert('Error cannot fire pilot');
         }
       );
     }

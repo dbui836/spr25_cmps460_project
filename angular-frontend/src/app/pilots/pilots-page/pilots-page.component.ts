@@ -12,9 +12,13 @@ import { RouterLink } from '@angular/router';
 })
 export class PilotsPageComponent {
   selectedPilotID: number | null = null; // get from displayPilot Component to pass to edit-delete-pilot component
-
+  change: number | null = null;
   
   OnPilotSelected(pilotID: number): void {
     this.selectedPilotID = pilotID; 
+  }
+
+  OnTableChange(count: number): void{
+    this.change = count;
   }
 }

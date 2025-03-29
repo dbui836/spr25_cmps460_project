@@ -1,6 +1,7 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Output, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PilotService } from '../pilot.service';
+import { SimpleChanges } from '@angular/core';
 
 
 
@@ -15,16 +16,27 @@ export class DisplayPilotsComponent {
   selectedPilotID: number | null = null; // to color the selected pilot
 
   @Output() curr_pilot = new EventEmitter<number>(); // to emit ID for edit-delete
+  @Input() updateTable: number | null = null; // recieved when edit-delete changed something
 
   constructor(private pilotService: PilotService) {}
 
   ngOnInit(): void {
 
+    this.loadPilots();
+
+  }
+
+  // when table updated via edit-delete, re-get the new pilot table
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['updateTable']){
+      this.loadPilots();
+    }
+  }
+
+  loadPilots(): void{
     this.pilotService.getAllPilots().subscribe(
-        response => {this.pilots = response;}
-
+      response => {this.pilots = response;}
     );
-
   }
 
   selectPilot(pilotID: number): void {

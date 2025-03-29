@@ -20,9 +20,14 @@ export class PilotService {
     return this.http.get<any>(`${apiURL}?id=${pilotID}`);
   }
 
-  updatePilotByID(pilot: any): Observable<any> {
-    const apiURL2 = 'http://localhost/spr25_cmps460_project/backend/api/pilot_APIs/updatePilotByID.php';
-    return this.http.post<any>(apiURL2, pilot);
+  updatePilot(pilot: any): Observable<any> {
+    const apiURL = 'http://localhost/spr25_cmps460_project/backend/api/pilot_APIs/updatePilotByID.php';
+    return this.http.post<any>(apiURL, pilot);
+  }
+
+  deletePilotByID(pilotID: any): Observable<any> {
+    const apiURL = 'http://localhost/spr25_cmps460_project/backend/api/pilot_APIs/deletePilotByID.php';
+    return this.http.get<any>(`${apiURL}?id=${pilotID}`);
   }
 
  

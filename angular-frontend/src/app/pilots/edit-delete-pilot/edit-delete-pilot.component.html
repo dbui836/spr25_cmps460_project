@@ -24,7 +24,7 @@
 
     <!-- Pilot license, choose from preset options -->
     <div class="form-field"> 
-    <label for="certification">Certification:</label>
+    <label for="certification">License:</label>
     <select id="certification" [(ngModel)]="pilot.license" name="license">
       <option value="Student">Student</option>
       <option value="Recreational">Recreational</option>
@@ -47,7 +47,14 @@
     </div>
 
 
-    <button type="submit">Update</button>
+    
+    <div class="form-actions">
+        <!-- Update Button -->
+        <button type="submit" [disabled]="!pilot.pltID">Update</button>
+
+        <!-- Delete Button -->
+        <button type="button" [disabled]="!pilot.pltID" (click)="deletePilot()">Delete</button>
+      </div>
   </div>
 </form>
 
