@@ -19,6 +19,8 @@ export class DisplayPilotsComponent {
   @Output() curr_pilot = new EventEmitter<number>(); // to emit ID for edit-delete
   @Input() updateTable: number | null = null; // recieved when edit-delete changed something
 
+  max_consec: number = 48;
+
   constructor(private pilotService: PilotService) {}
 
   ngOnInit(): void {

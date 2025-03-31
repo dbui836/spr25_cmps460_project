@@ -1,3 +1,4 @@
+<div class="table-container">
 <!--Basic Pilot Display Table -->
 <table border='1'>
     <thead>
@@ -12,24 +13,65 @@
         </tr>
     </thead>
 
-    <tbody>
-    <!--Loop threw pilot row by row -->
-    <tr *ngFor="let pilot of pilots" 
-    (click)="selectPilot(pilot.pltID)" 
-    [ngClass]="{'selected-row': selectedPilotID === pilot.pltID}">
+    
+        <tbody>
+            <!--Loop threw pilot row by row -->
+            <tr *ngFor="let pilot of pilots" 
+            (click)="selectPilot(pilot.pltID)" 
+            [ngClass]="{'selected-row': selectedPilotID === pilot.pltID}">
 
-        <td>{{pilot.pltID}}</td>
-        <td>{{pilot.plt_fname}}</td>
-        <td>{{pilot.plt_lname}}</td>
-        <td>{{pilot.license}}</td>
-        <td>{{pilot.plt_location}}</td>
-        <td>{{pilot.consec_hrs_flown}}</td>
-    </tr>
-</tbody>
+                <td>{{pilot.pltID}}</td>
+                <td>{{pilot.plt_fname}}</td>
+                <td>{{pilot.plt_lname}}</td>
+                <td>{{pilot.license}}</td>
+                <td>{{pilot.plt_location}}</td>
+                <td>{{pilot.consec_hrs_flown}}</td>
+            </tr>
+        </tbody>
+    
 </table>
+</div>
+<br>
+
+<div class = "filter-container">
+<b>Filters: </b>
+<label>
+    <input type="checkbox" checked/>
+    Student
+</label>
+<label>
+    <input type="checkbox" checked/>
+    Recreational
+</label>
+<label>
+    <input type="checkbox" checked/>
+    Private
+</label>
+<label>
+    <input type="checkbox" checked/>
+    Commercial
+</label>
+<label>
+    <input type="checkbox" checked/>
+    Airline Transport
+</label>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<label>
+    <input type="checkbox" checked/>
+    Under {{ max_consec }} consec hrs
+</label>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<label>
+    <input type="checkbox" checked/>
+    At/Over {{ max_consec }} consec hrs
+</label>
+</div>
+
 <!--Create new pilot to add to table-->
 <div class="button-container">
     <a routerLink="/createPilot" class="button">Add Pilot</a>
 </div>
+
+
 
 

@@ -1,9 +1,28 @@
+.filter-container {
+    margin-left: 225px;
+  }
+
+
+.table-container {
+    max-height: 400px;  
+    overflow: auto;   
+    border: 1px solid black; 
+    width: 77%; 
+    margin-left: auto;
+    margin-right: 0;
+    margin-top: auto;
+          
+}
+
 /*Styling for table header*/
 thead {
     background-color: lightblue; 
     color: black; 
     font-size: 18px;
     font-weight: bold;
+    position: sticky !important;      
+    top: 0 !important;               
+    z-index: 1 !important;  
 }
 
 /* Styling for selecting a row */
@@ -11,7 +30,7 @@ thead {
     background-color: #c8e6c9 !important; 
     cursor: pointer;           
 }
-  
+
 
 tbody tr:hover {
    background-color: #f6c9c9; 
@@ -19,7 +38,6 @@ tbody tr:hover {
 
 tbody tr {
     background-color: whitesmoke;
-
 }
 
 /* Styling for table*/
@@ -27,16 +45,28 @@ table {
     margin-left: auto;
     margin-right: 0;
     margin-top: auto;
-    border-collapse: collapse;  
-    width: 77%; 
+    border-collapse: separate;
+    border-spacing: 1; 
+    width: 100%; 
     table-layout: fixed;
-    overflow: hidden;
+    
 }
 
-th, td {
-    padding: 10px;
+th {
+    position: sticky !important;      
+    top: 2 !important;               
+    z-index: 4;          
+    background-color: lightblue; 
+    border: 1px solid black;  
+    box-sizing: border-box;
+    text-align: center; 
+    padding: 9px;
+}
+
+td {
+    padding: 9px;
     text-align: center;  
-    border: 2px solid black; 
+    border: 1px solid black; 
 }
 
 /* Styling for button */
@@ -70,3 +100,5 @@ th, td {
     margin-top: 20px;
     width: 125%;
 }
+
+
