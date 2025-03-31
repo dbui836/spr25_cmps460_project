@@ -34,37 +34,17 @@
 <br>
 
 <div class = "filter-container">
-<b>Filters: </b>
-<label>
-    <input type="checkbox" checked/>
-    Student
-</label>
-<label>
-    <input type="checkbox" checked/>
-    Recreational
-</label>
-<label>
-    <input type="checkbox" checked/>
-    Private
-</label>
-<label>
-    <input type="checkbox" checked/>
-    Commercial
-</label>
-<label>
-    <input type="checkbox" checked/>
-    Airline Transport
-</label>
-<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<label>
-    <input type="checkbox" checked/>
-    Under {{ max_consec }} consec hrs
-</label>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<label>
-    <input type="checkbox" checked/>
-    At/Over {{ max_consec }} consec hrs
-</label>
+    <div class="form-field"> 
+        <label for="certification"><b>License: </b> </label>
+        <select id="certification" [(ngModel)]="filterLicense" (change)="loadPilots()" name="license">
+          <option value="All">All</option>
+          <option value="Student">Student</option>
+          <option value="Recreational">Recreational</option>
+          <option value="Private">Private</option>
+          <option value="Commercial">Commercial</option>
+          <option value="Airline Transport">Airline Transport</option>
+        </select>
+      </div>
 </div>
 
 <!--Create new pilot to add to table-->
