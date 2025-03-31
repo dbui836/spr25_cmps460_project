@@ -1,3 +1,4 @@
+/*Styling for table header*/
 thead {
     background-color: lightblue; 
     color: black; 
@@ -5,7 +6,7 @@ thead {
     font-weight: bold;
 }
 
-  /* Light green background for selected row */
+/* Styling for selecting a row */
 .selected-row {
     background-color: #c8e6c9 !important; 
     cursor: pointer;           
@@ -21,6 +22,7 @@ tbody tr {
 
 }
 
+/* Styling for table*/
 table {
     margin-left: auto;
     margin-right: 0;
@@ -37,6 +39,7 @@ th, td {
     border: 2px solid black; 
 }
 
+/* Styling for button */
 .button {
     display: inline-block;
     padding: 10px 20px;

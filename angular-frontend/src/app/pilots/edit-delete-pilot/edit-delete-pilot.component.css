@@ -1,24 +1,23 @@
+/* Styling for form */
+form {
+    width: 50%; 
+    padding: 20px;
+    border: 2px solid black;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: whitesmoke;
+    flex-direction: column;
+}
+
 .form-container {
     display: flex;
     justify-content: flex-start;
     align-items: flex-start;
     
 }
-
   
 .form-field {
     margin-bottom: 15px;   
-}
-  
-  
-form {
-    width: 50%; 
-    padding: 20px;
-    border: 1px solid black;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    background-color: whitesmoke;
-    flex-direction: column;
 }
 
 form label {
@@ -38,6 +37,7 @@ form button {
     box-sizing: border-box; 
 }
 
+/* Styling for update and delete buttons */
 form button[type="submit"] {
     background-color: #89e88c;  
 }
@@ -71,9 +71,9 @@ form button:active[type="button"] {
 }
 
 
-
+/* Puts the update and delete button side by side */
 .form-actions {
-    display: flex;          /* Makes the container a flexbox */
-    gap: 10px;              /* Adds space between the buttons */
-    justify-content: flex-start; /* Align buttons to the left */
+    display: flex;          
+    gap: 10px;             
+    justify-content: flex-start; 
 }
