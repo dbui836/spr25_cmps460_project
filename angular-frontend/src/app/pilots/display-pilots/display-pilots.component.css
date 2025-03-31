@@ -1,10 +1,10 @@
 .filter-container {
-    margin-left: 225px;
+    margin-left: 200px;
   }
 
 
 .table-container {
-    max-height: 400px;  
+    max-height: 414px;  
     overflow: auto;   
     border: 1px solid black; 
     width: 77%; 
