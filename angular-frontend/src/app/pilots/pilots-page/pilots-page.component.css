@@ -1,5 +1,5 @@
 
-  .button {
+.button {
     display: inline-block;
     padding: 10px 20px;
     background-color: rgb(255, 234, 118);
@@ -9,31 +9,33 @@
     text-align: center;
     cursor: pointer;
     font-size: 16px;
-  }
-  
-  .button:hover {
-    background-color: rgb(255, 225, 52);
-  }
-  
-  .button:active {
-    background-color: rgb(255, 217, 0);
-  }
+}
 
-  .container {
+.button:hover {
+    background-color: rgb(255, 225, 52);
+    transform: scale(1.05);   
+}
+  
+.button:active {
+    background-color: rgb(231, 200, 0);
+    transform: scale(0.95);
+}
+
+.container {
     display: flex;
     gap: 100px;  
-    align-items: flex-start;         /* Align the components to the top */
-    flex-wrap: wrap;                 /* Allow components to wrap if the screen is too small */
-  }
+    align-items: flex-start;         
+    flex-wrap: wrap;              
+}
   
-  /* Styling the Display Pilots component (table) */
-  app-display-pilots {
-    flex: 2; /* Takes up more space compared to the other components */
-    width: 50%; /* Ensure it doesn’t become too narrow */
-  }
+  
+app-display-pilots {
+    flex: 2; 
+    width: 50%;
+}
 
-  app-edit-delete-pilot {
-    flex: 1.25;  /* Takes up less space compared to the table */
-    width: 100%; /* Ensure it doesn’t become too narrow */
-  }
-  
+app-edit-delete-pilot {
+    flex: 1.25;  
+    width: 100%;
+}
+

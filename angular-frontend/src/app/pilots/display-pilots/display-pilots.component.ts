@@ -2,12 +2,13 @@ import { Component, EventEmitter, Output, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PilotService } from '../pilot.service';
 import { SimpleChanges } from '@angular/core';
+import { RouterLink } from '@angular/router';
 
 
 
 @Component({
   selector: 'app-display-pilots',
-  imports: [CommonModule],
+  imports: [CommonModule, RouterLink],
   templateUrl: './display-pilots.component.html',
   styleUrl: './display-pilots.component.css',
 })

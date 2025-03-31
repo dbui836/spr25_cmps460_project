@@ -38,28 +38,35 @@ form button {
     box-sizing: border-box; 
 }
 
+form button[type="submit"] {
+    background-color: #89e88c;  
+}
 
 form button:hover[type="submit"] {
-    background-color: #c8e6c9; 
+    background-color: #a8f5ab !important; ; 
     color: black;               
     transform: scale(1.05);    
 }
   
 
 form button:active[type="submit"] {
-    background-color: rgb(59, 140, 63); 
+    background-color: rgb(50, 184, 57) !important; ; 
     transform: scale(0.95);    
 }
 
+form button[type="button"] {
+    background-color: #ff9393;  
+}
+
 form button:hover[type="button"] {
-    background-color: #ed8787; 
+    background-color: #ed8787 !important; ; 
     color: black;               
     transform: scale(1.05);    
 }
   
 
 form button:active[type="button"] {
-    background-color: #b73838; 
+    background-color: #be3131 !important; ; 
     transform: scale(0.95);    
 }
 

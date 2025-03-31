@@ -28,11 +28,42 @@ table {
     border-collapse: collapse;  
     width: 77%; 
     table-layout: fixed;
+    overflow: hidden;
 }
 
 th, td {
     padding: 10px;
     text-align: center;  
-    border: 1px solid black; 
+    border: 2px solid black; 
 }
 
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: rgb(255, 234, 118);
+    color: black;
+    text-decoration: none;  
+    border-radius: 5px;
+    text-align: center;
+    cursor: pointer;
+    font-size: 16px;
+    border: 1px solid black;
+    border-radius: 9px;
+}
+
+.button:hover {
+    background-color: rgb(255, 225, 52);
+    transform: scale(1.05);   
+}
+  
+.button:active {
+    background-color: rgb(231, 200, 0);
+    transform: scale(0.95);
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    width: 125%;
+}

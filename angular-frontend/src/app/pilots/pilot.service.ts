@@ -27,7 +27,7 @@ export class PilotService {
 
   deletePilotByID(pilotID: any): Observable<any> {
     const apiURL = 'http://localhost/spr25_cmps460_project/backend/api/pilot_APIs/deletePilotByID.php';
-    return this.http.get<any>(`${apiURL}?id=${pilotID}`);
+    return this.http.delete<any>(`${apiURL}?id=${pilotID}`);
   }
 
  
