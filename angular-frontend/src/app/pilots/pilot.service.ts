@@ -30,6 +30,10 @@ export class PilotService {
     return this.http.delete<any>(`${apiURL}?id=${pilotID}`);
   }
 
+  createPilot(pilot: any): Observable<any> {
+    const apiURL = 'http://localhost/spr25_cmps460_project/backend/api/pilot_APIs/createPilot.php';
+    return this.http.post<any>(apiURL, pilot);
+  }
  
 
   // Can include more functions below
