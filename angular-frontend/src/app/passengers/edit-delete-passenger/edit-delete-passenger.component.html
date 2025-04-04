@@ -1,0 +1,36 @@
+<!-- Update Passenger Form -->
+
+<!-- <pre>{{ passenger | json }}</pre>  debug -->
+<div class="form-container">
+    <form #passengerForm="ngForm" (ngSubmit)="updatePassenger()">
+      <div *ngIf="passenger">
+        <!-- Passenger ID, int (CAN'T CHANGE) -->
+        <div class="form-field"> 
+        <label for="passID">ID:</label>
+        <input type="text" id="passID" [(ngModel)]="passenger.passID" name="passID" disabled />
+        </div>
+    
+        <!-- Pilot first name, string -->
+        <div class="form-field"> 
+        <label for="pass_fname">First Name:</label>
+        <input type="text" id="pass_fname" [(ngModel)]="passenger.pass_fname" name="pass_fname" required/>
+        </div>
+    
+        <!-- Pilot last name, string -->
+        <div class="form-field"> 
+        <label for="pass_lname">Last Name:</label>
+        <input type="text" id="pass_lname" [(ngModel)]="passenger.pass_lname" name="pass_lname" required/>
+        </div>
+    
+        
+        <div class="form-actions">
+            <!-- Update Button -->
+            <button type="submit" [disabled]="!passenger.passID || !passengerForm.valid">Update</button>
+    
+            <!-- Delete Button -->
+            <button type="button" [disabled]="!passenger.passID" (click)="deletePassenger()">Delete</button>
+          </div>
+      </div>
+    </form>
+    
+    </div>

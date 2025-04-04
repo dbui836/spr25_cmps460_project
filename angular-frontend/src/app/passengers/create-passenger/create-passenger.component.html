@@ -1,0 +1,27 @@
+<!--<pre>{{ passenger | json }} </pre> Debug-->
+<h1>Create Passenger</h1>
+<div class="form-container">
+    <form #passengerForm="ngForm" (ngSubmit)="createPassenger()">
+
+
+        <!-- Passenger first name, string -->
+        <div class="form-field"> 
+        <label for="pass_fname">First Name:</label>
+        <input type="text" id="pass_fname" [(ngModel)]="passenger.pass_fname" name="pass_fname" required/>
+        </div>
+    
+        <!-- Passenger last name, string -->
+        <div class="form-field"> 
+        <label for="pass_lname">Last Name:</label>
+        <input type="text" id="pass_lname" [(ngModel)]="passenger.pass_lname" name="pass_lname" required/>
+        </div>
+    
+        
+        <div class="form-actions">
+            <!-- Update Button -->
+            <button type="submit" [disabled]="!passengerForm.valid">Add</button>
+    
+          </div>
+    </form>
+    
+</div>

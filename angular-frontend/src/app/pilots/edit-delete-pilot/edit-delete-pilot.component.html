@@ -2,7 +2,7 @@
 
 <!-- <pre>{{ pilot | json }}</pre>  debug -->
 <div class="form-container">
-<form (ngSubmit)="updatePilot()">
+<form #pilotForm="ngForm" (ngSubmit)="updatePilot()">
   <div *ngIf="pilot">
     <!-- Pilot ID, int (CAN'T CHANGE) -->
     <div class="form-field"> 
@@ -13,19 +13,19 @@
     <!-- Pilot first name, string -->
     <div class="form-field"> 
     <label for="plt_fname">First Name:</label>
-    <input type="text" id="plt_fname" [(ngModel)]="pilot.plt_fname" name="plt_fname" />
+    <input type="text" id="plt_fname" [(ngModel)]="pilot.plt_fname" name="plt_fname" required/>
     </div>
 
     <!-- Pilot last name, string -->
     <div class="form-field"> 
     <label for="plt_lname">Last Name:</label>
-    <input type="text" id="plt_lname" [(ngModel)]="pilot.plt_lname" name="plt_lname" />
+    <input type="text" id="plt_lname" [(ngModel)]="pilot.plt_lname" name="plt_lname"required/>
     </div>
 
     <!-- Pilot license, choose from preset options -->
     <div class="form-field"> 
     <label for="certification">License:</label>
-    <select id="certification" [(ngModel)]="pilot.license" name="license">
+    <select id="certification" [(ngModel)]="pilot.license" name="license" required>
       <option value="Student">Student</option>
       <option value="Recreational">Recreational</option>
       <option value="Private">Private</option>
@@ -37,20 +37,20 @@
     <!-- Pilot location, string -->
     <div class="form-field"> 
     <label for="plt_location">Current Location:</label>
-    <input type="text" id="plt_location" [(ngModel)]="pilot.plt_location" name="plt_location" />
+    <input type="text" id="plt_location" [(ngModel)]="pilot.plt_location" name="plt_location" required/>
     </div>
 
     <!-- Consecutive Hours Flown, make sure number and has min value 0 -->
     <div class="form-field"> 
     <label for="consec_hrs_flown">Consecutive Hours Flown:</label>
-    <input type="number" id="consec_hrs_flown" [(ngModel)]="pilot.consec_hrs_flown" name="consec_hrs_flown" min="0" />
+    <input type="number" id="consec_hrs_flown" [(ngModel)]="pilot.consec_hrs_flown" name="consec_hrs_flown" min="0" required/>
     </div>
 
 
     
     <div class="form-actions">
         <!-- Update Button -->
-        <button type="submit" [disabled]="!pilot.pltID">Update</button>
+        <button type="submit" [disabled]="!pilot.pltID || !pilotForm.valid">Update</button>
 
         <!-- Delete Button -->
         <button type="button" [disabled]="!pilot.pltID" (click)="deletePilot()">Fire</button>

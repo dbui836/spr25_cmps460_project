@@ -1,0 +1,47 @@
+<div class="table-container">
+    <!--Basic Passenger Display Table -->
+    <table border='1'>
+        <thead>
+            <tr>
+                <!--Set up table headers -->
+                <th>ID</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+            </tr>
+        </thead>
+    
+        
+            <tbody>
+                <!--Loop threw passenger row by row -->
+                <tr *ngFor="let pass of passengers" 
+                (click)="selectPassenger(pass.passID)" 
+                [ngClass]="{'selected-row': selectedPassengerID === pass.passID}">
+    
+                    <td>{{pass.passID}}</td>
+                    <td>{{pass.pass_fname}}</td>
+                    <td>{{pass.pass_lname}}</td>
+      
+                </tr>
+            </tbody>
+        
+    </table>
+    </div>
+    <br>
+
+    <div class = "filter-container">
+        <div class="form-field">
+            <label for="fName"><b>First Name: </b></label>
+            <input id="fName" type="text" [(ngModel)]="filterfName" name="fName">
+            &nbsp;&nbsp;&nbsp;
+            <label for="lName"><b>Last Name: </b></label>
+            <input id="lName" type="text" [(ngModel)]="filterlName" name="lName">
+            &nbsp;&nbsp;
+            <button (click)="loadPassengers()">Search</button>
+        </div>
+        
+    </div>
+
+    <!--Create new passenger to add to table-->
+    <div class="button-container">
+        <a routerLink="/createPassenger" class="button">Add Passenger</a>
+    </div>

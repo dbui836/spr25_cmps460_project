@@ -1,0 +1,59 @@
+h1 {
+    text-align: center;
+}
+
+form {
+    width: 25%; 
+    padding: 20px;
+    border: 2px solid black;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: whitesmoke;
+    flex-direction: column;
+}
+
+.form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+  
+.form-field {
+    margin-bottom: 15px;   
+}
+
+form label {
+    display: block; 
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+form input,
+form select,
+form button {
+    width: 100%; 
+    padding: 10px; 
+    font-size: 16px;
+    border: 1px solid black;
+    border-radius: 9px;
+    box-sizing: border-box; 
+}
+
+/* Styling for update and delete buttons */
+form button[type="submit"] {
+    background-color: rgb(255, 234, 118);  
+}
+
+form button:hover[type="submit"] {
+    background-color:  rgb(255, 225, 52) !important ; 
+    color: black;               
+    transform: scale(1.05);    
+}
+  
+
+form button:active[type="submit"] {
+    background-color: rgb(231, 200, 0) !important; ; 
+    transform: scale(0.95);    
+}
+

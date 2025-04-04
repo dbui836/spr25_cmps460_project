@@ -8,6 +8,12 @@ include("../connect_db.php");
 
 # Embedded sql to show entire pilot table
 $sql = "SELECT * from pilot";
+$optLicense = $_GET['license'];
+
+if ($optLicense !== "All"){
+    $sql .= " WHERE license = '$optLicense'";
+}
+
 $result = $conn->query($sql);
 
 # if results not empty

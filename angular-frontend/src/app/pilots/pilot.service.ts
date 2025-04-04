@@ -35,6 +35,4 @@ export class PilotService {
     return this.http.post<any>(apiURL, pilot);
   }
  
-
-  // Can include more functions below
 }
