@@ -1,0 +1,89 @@
+.plane-container {
+    width: 100%;
+    overflow-x: hidden;
+    z-index: 10; /* Adjust as needed so it doesn't overlap content */
+  }
+
+/*Planes at the top of the webpage*/
+.plane, .plane2, .plane3, .plane4, .plane5 {
+    position: absolute;
+    top: 1.15%;
+    left: -150px;
+    width: auto;
+    height: 50px;
+
+    animation: movePlaneTopPg 25s linear infinite;
+}
+
+.plane2 {
+    animation-delay: 5s;
+}
+
+.plane3 {
+    animation-delay: 10s;
+}
+
+.plane4 {
+    animation-delay: 15s;
+}
+
+.plane5 {
+    animation-delay: 20s;
+}
+  
+/*Animation frame go from left to right across screen*/
+@keyframes movePlaneTopPg {
+    0% {
+
+      transform: translateX(0px);
+    }
+    100% {
+
+      transform: translateX(calc(100vw + 150px));
+    }
+}
+  
+
+/*Bottom of the page planes (go in opposite direction)*/
+.plane6 i,
+.plane7 i,
+.plane8 i,
+.plane9 i,
+.plane10 i {
+    transform: scaleX(-1); /* Flip the plane horizontally */
+}
+
+.plane6, .plane7, .plane8, .plane9, .plane10 {
+    position: absolute;
+    bottom: -3.5%;  
+    left: calc(100vw + 150px);   
+    width: auto;
+    height: 50px;
+    animation: movePlaneBottomPg 25s linear infinite;
+}
+  
+.plane7 {
+    animation-delay: 5s;
+}
+  
+.plane8 {
+    animation-delay: 10s;
+}
+  
+.plane9 {
+    animation-delay: 15s;
+}
+  
+.plane10 {
+    animation-delay: 20s;
+}
+
+/*Animation frame go from right to left across screen*/
+@keyframes movePlaneBottomPg {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(calc(-100vw - 150px));
+    }
+}  

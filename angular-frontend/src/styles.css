@@ -3,3 +3,9 @@ body {
     margin: 0;
     padding: 0;
 }
+
+/* Prevent offscreen plane from extending page horizontally*/
+body {
+    max-width: 100%;
+    overflow-x: hidden;
+}

@@ -6,7 +6,7 @@ ul {
     border: 3px solid #000;  /* Black border around the navbar */
     border-radius: 40px;
     width: 80%;
-    list-style-type: none;
+    height: auto;
     text-align: center;
 }
 li {
@@ -27,4 +27,35 @@ a {
 }
 li:hover {
     background: rgb(254, 167, 167);
+}
+.logo-left {
+    margin-left: 70px; 
+}
+
+.logo-right {
+    margin-right: 70px;
+}
+
+.logo-left img, .logo-right img{
+    width: 60px;
+    height: auto;
+    margin-top: 10px;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; 
+    height: auto;
+    box-sizing: border-box;
+}
+
+.navbar-left {
+    display: flex;
+    align-items: center;
+}
+
+.navbar-right {
+    display: flex;
+    align-items: center; 
 }

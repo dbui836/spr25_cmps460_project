@@ -34,6 +34,7 @@
 <br>
 
 <div class = "filter-container">
+    <!--License Filter-->
     <div class="form-field"> 
         <label for="certification"><b>License: </b> </label>
         <select id="certification" [(ngModel)]="filterLicense" (change)="loadPilots()" name="license">
@@ -45,6 +46,13 @@
           <option value="Airline Transport">Airline Transport</option>
         </select>
       </div>
+
+      <!-- Consec Hrs Filter -->
+    <div class="form-field">
+        <label for="consecHrsFilter"><b>Consec Hours Flown Less Than: </b> </label>
+        <input id="consecHrsFilter" type="number" [(ngModel)]="filterConsecHrs" min="0" (change)="loadPilots()" />
+    </div>
+    
 </div>
 
 <!--Create new pilot to add to table-->

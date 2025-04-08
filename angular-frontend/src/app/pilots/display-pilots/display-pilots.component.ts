@@ -21,6 +21,7 @@ export class DisplayPilotsComponent {
   @Input() updateTable: number | null = null; // recieved when edit-delete changed something
 
   filterLicense: any = "All";
+  filterConsecHrs: number | null = null;
 
   constructor(private pilotService: PilotService) {}
 
@@ -38,7 +39,8 @@ export class DisplayPilotsComponent {
   }
 
   loadPilots(): void{
-    this.pilotService.getPilots(this.filterLicense).subscribe(
+    console.log('Current value of filterConsecHrs: ', this.filterConsecHrs);
+    this.pilotService.getPilots(this.filterLicense, this.filterConsecHrs).subscribe(
       response => {this.pilots = response;}
     );
   }

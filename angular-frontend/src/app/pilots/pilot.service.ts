@@ -10,9 +10,9 @@ export class PilotService {
   
   constructor(private http: HttpClient) { }
 
-  getPilots(optFilter_license: any): Observable<any[]>{
+  getPilots(optFilter_license: any, optFilter_hrs: any): Observable<any[]>{
     const apiURL = 'http://localhost/spr25_cmps460_project/backend/api/pilot_APIs/getPilots.php';
-    return this.http.get<any>(`${apiURL}?license=${optFilter_license}`); // GET request to php API  
+    return this.http.get<any>(`${apiURL}?license=${optFilter_license}&hrs=${optFilter_hrs}`); // GET request to php API  
   }
 
   getPilotById(pilotID: number): Observable<any> {
