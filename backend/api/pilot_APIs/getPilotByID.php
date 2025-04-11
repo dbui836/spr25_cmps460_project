@@ -8,10 +8,14 @@ include("../connect_db.php");
 
 // Check if id is set in the url
 if (isset($_GET['id'])) {
-    $pilotId = $_GET['id'];
+    $pilotId = (int) $_GET['id'];
 
-    $sql = "SELECT * FROM pilot WHERE pltID = $pilotId";
-    $result = $conn->query($sql);
+    $sql = "SELECT * FROM pilot WHERE pltID = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("i", $pilotId);
+    $stmt->execute();
+
+    $result = $stmt->get_result();
 
     if ($result === false) {
         echo json_encode(['error' => 'Query failed: ' . $conn->error]);
@@ -23,6 +27,8 @@ if (isset($_GET['id'])) {
     } else {
         echo json_encode(['error' => 'Pilot not found']);
     }
+
+    $stmt->close();
 } else {
     echo json_encode(['error' => 'No pilot ID provided']);
 }

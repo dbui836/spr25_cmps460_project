@@ -15,17 +15,31 @@ $lname = $_GET['lname'];
 if ($fname !== "" || $lname !== ""){
 
     if ($fname !== ""){
-        $sql .= " WHERE pass_fname = '$fname'";
+        $sql .= " WHERE pass_fname = ?";
         if ($lname !== ""){
-            $sql .= " AND pass_lname = '$lname'";
+            $sql .= " AND pass_lname = ?";
         }
     }else{
-        $sql .= " WHERE pass_lname = '$lname'";
+        $sql .= " WHERE pass_lname = ?";
+    }
+}
+
+$stmt = $conn->prepare($sql);
+if ($fname !== "" || $lname !== ""){
+    if ($fname !== ""){
+        if ($lname !== ""){
+            $stmt->bind_param("ss", $fname, $lname);
+        } else{
+            $stmt->bind_param("s", $fname);
+        }
+    }else{
+        $stmt->bind_param("s", $lname);
     }
 }
 
 
-$result = $conn->query($sql);
+$stmt->execute();
+$result = $stmt->get_result();
 
 # if results not empty
 if ($result->num_rows > 0){
@@ -44,6 +58,7 @@ if ($result->num_rows > 0){
 }
 
 # Close connection 
+$stmt->close();
 $conn->close();
 
 ?>

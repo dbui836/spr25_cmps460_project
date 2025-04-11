@@ -13,17 +13,22 @@ $data = json_decode(file_get_contents("php://input"), true);
 
 // Check if the data has required fields
 if (isset($data['passID']) && isset($data['pass_fname']) && isset($data['pass_lname'])) {
-    $passID = $data['passID'];
+    $passID = (int) $data['passID'];
     $pass_fname = $data['pass_fname'];
     $pass_lname = $data['pass_lname'];
 
 
     // Update the passenger in the database
-    $sql = "UPDATE passenger SET pass_fname = '$pass_fname', pass_lname = '$pass_lname' WHERE passID = '$passID'";
+    $sql = "UPDATE passenger SET pass_fname = ?, pass_lname = ? WHERE passID = ?";
     
-    if ($conn->query($sql) === FALSE) {
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("ssi", $pass_fname, $pass_lname, $passID);
+
+
+    if ($stmt->execute() === FALSE) {
         echo json_encode(['error' => 'Error updating pilot']);
     }
+    $stmt->close();
 } else {
     echo json_encode(['error' => 'Invalid data']);
 }

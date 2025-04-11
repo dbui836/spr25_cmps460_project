@@ -6,23 +6,37 @@ include("../connect_db.php");
 
 
 
-# Embedded sql to show entire pilot table
+# Embedded sql to show pilot table
 $sql = "SELECT * from pilot";
 $optLicense = $_GET['license'];
 $optHrs = $_GET['hrs'];
 
 if ($optLicense !== "All"){
-    $sql .= " WHERE license = '$optLicense'";
+    $sql .= " WHERE license = ?";
     if ($optHrs !== "null"){
-        $optHrs = floatval($optHrs);
-        $sql .= " AND $optHrs > consec_hrs_flown";
+        $optHrs = (int)$optHrs;
+        $sql .= " AND ? > consec_hrs_flown";
     }
 } elseif ($optHrs !== "null"){
-    $optHrs = floatval($optHrs);
-    $sql .= " WHERE $optHrs > consec_hrs_flown";
+    $optHrs = (int)$optHrs;
+    $sql .= " WHERE ? > consec_hrs_flown";
 }
 
-$result = $conn->query($sql);
+
+$stmt = $conn->prepare($sql);
+if ($optLicense !== "All"){
+    if ($optHrs !== "null"){
+        $stmt->bind_param("si", $optLicense, $optHrs);
+    } else{
+        $stmt->bind_param("s", $optLicense);
+    }
+} elseif ($optHrs !== "null"){
+    $stmt->bind_param("i", $optHrs);
+}
+
+
+$stmt->execute();
+$result = $stmt->get_result();
 
 # if results not empty
 if ($result->num_rows > 0){
@@ -41,6 +55,7 @@ if ($result->num_rows > 0){
 }
 
 # Close connection 
+$stmt->close();
 $conn->close();
 
 ?>

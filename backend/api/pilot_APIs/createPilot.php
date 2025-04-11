@@ -17,19 +17,24 @@ if (isset($data['plt_fname']) && isset($data['plt_lname']) && isset($data['licen
     $plt_lname = $data['plt_lname'];
     $plt_location = $data['plt_location'];
     $license = $data['license'];
-    $consec_hrs_flown = $data['consec_hrs_flown'];
+    $consec_hrs_flown = (int)$data['consec_hrs_flown'];
 
     // Update the pilot in the database
     $sql = "INSERT INTO Pilot (plt_fname, plt_lname, license, plt_location, consec_hrs_flown)
-            VALUES ('$plt_fname', '$plt_lname', '$license','$plt_location', '$consec_hrs_flown')";
+            VALUES (?, ?, ?, ?, ?)";
     
 
-    if ($conn->query($sql) === FALSE) {
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("ssssi", $plt_fname, $plt_lname, $license, $plt_location, $consec_hrs_flown);
+
+    if ($stmt->execute() === FALSE) {
         echo json_encode(['error' => 'Error adding pilot']);
     }
+    $stmt->close();
 } else {
     echo json_encode(['error' => 'Invalid data']);
 }
 
 $conn->close();
+
 ?>

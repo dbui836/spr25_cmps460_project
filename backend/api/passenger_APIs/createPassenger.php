@@ -19,12 +19,16 @@ if (isset($data['pass_fname']) && isset($data['pass_lname'])) {
 
     // Update the pilot in the database
     $sql = "INSERT INTO Passenger (pass_fname, pass_lname)
-            VALUES ('$pass_fname', '$pass_lname')";
+            VALUES (?, ?)";
     
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("ss", $pass_fname, $pass_lname);
 
-    if ($conn->query($sql) === FALSE) {
+
+    if ($stmt->execute() === FALSE) {
         echo json_encode(['error' => 'Error adding passenger']);
     }
+    $stmt->close();
 } else {
     echo json_encode(['error' => 'Invalid data']);
 }

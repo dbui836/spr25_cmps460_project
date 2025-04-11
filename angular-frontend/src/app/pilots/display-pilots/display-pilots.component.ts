@@ -39,7 +39,6 @@ export class DisplayPilotsComponent {
   }
 
   loadPilots(): void{
-    console.log('Current value of filterConsecHrs: ', this.filterConsecHrs);
     this.pilotService.getPilots(this.filterLicense, this.filterConsecHrs).subscribe(
       response => {this.pilots = response;}
     );

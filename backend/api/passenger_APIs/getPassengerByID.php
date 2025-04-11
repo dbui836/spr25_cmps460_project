@@ -10,8 +10,12 @@ include("../connect_db.php");
 if (isset($_GET['id'])) {
     $passId = $_GET['id'];
 
-    $sql = "SELECT * FROM passenger WHERE passID = $passId";
-    $result = $conn->query($sql);
+    $sql = "SELECT * FROM passenger WHERE passID = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("i", $passId);
+    $stmt->execute();
+
+    $result = $stmt->get_result();
 
     if ($result === false) {
         echo json_encode(['error' => 'Query failed: ' . $conn->error]);
@@ -23,6 +27,8 @@ if (isset($_GET['id'])) {
     } else {
         echo json_encode(['error' => 'Passenger not found']);
     }
+
+    $stmt->close();
 } else {
     echo json_encode(['error' => 'No passenger ID provided']);
 }
