@@ -1,0 +1,79 @@
+/* Styling for form */
+form {
+    width: 50%; 
+    padding: 20px;
+    border: 2px solid black;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: whitesmoke;
+    flex-direction: column;
+}
+
+.form-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    
+}
+  
+.form-field {
+    margin-bottom: 15px;   
+}
+
+form label {
+    display: block; 
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+form input,
+form select,
+form button {
+    width: 100%; 
+    padding: 10px; 
+    font-size: 16px;
+    border: 1px solid black;
+    border-radius: 9px;
+    box-sizing: border-box; 
+}
+
+/* Styling for update and delete buttons */
+form button[type="submit"] {
+    background-color: #89e88c;  
+}
+
+form button:hover[type="submit"] {
+    background-color: #a8f5ab !important; ; 
+    color: black;               
+    transform: scale(1.05);    
+}
+  
+
+form button:active[type="submit"] {
+    background-color: rgb(50, 184, 57) !important; ; 
+    transform: scale(0.95);    
+}
+
+form button[type="button"] {
+    background-color: #ff9393;  
+}
+
+form button:hover[type="button"] {
+    background-color: #ed8787 !important; ; 
+    color: black;               
+    transform: scale(1.05);    
+}
+  
+
+form button:active[type="button"] {
+    background-color: #be3131 !important; ; 
+    transform: scale(0.95);    
+}
+
+
+/* Puts the update and delete button side by side */
+.form-actions {
+    display: flex;          
+    gap: 10px;             
+    justify-content: flex-start; 
+}

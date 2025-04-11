@@ -6,7 +6,8 @@ import { PassengerPageComponent } from './passengers/passenger-page/passenger-pa
 import { CreatePassengerComponent } from './passengers/create-passenger/create-passenger.component';
 import { PlaneModelPageComponent } from './planeModel/plane-model-page/plane-model-page.component';
 import { CreatePlaneModelComponent } from './planeModel/create-plane-model/create-plane-model.component';
-
+import { PlanePageComponent } from './plane/plane-page/plane-page.component';
+import { CreatePlaneComponent } from './plane/create-plane/create-plane.component';
 
 export const routes: Routes = [
     {
@@ -36,7 +37,13 @@ export const routes: Routes = [
     {
         path: 'createPlaneModel',
         component: CreatePlaneModelComponent
+    },
+    {
+        path: 'planes',
+        component: PlanePageComponent
+    },
+    {
+        path: 'createPlane',
+        component: CreatePlaneComponent
     }
-    
-
 ];

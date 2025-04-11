@@ -1,0 +1,25 @@
+<div class="table-container">
+    <table>
+        <thead>
+            <tr>
+                <th>Plane ID</th>
+                <th>Model ID</th>
+                <th>Hours Flown</th>
+            </tr>
+        </thead>  
+        <tbody>
+            <tr *ngFor="let plane of planes" 
+            (click)="selectPlane(plane.planeID)"
+            [ngClass]="{'selected-row': selectedPlaneID === plane.planeID}">
+                <td>{{plane.planeID}}</td>
+                <td>{{plane.modelID}}</td>
+                <td>{{plane.hrs_flown}}</td>
+            </tr>
+        </tbody>
+    </table>
+    </div>
+    <br>
+
+    <div class="button-container">
+        <a routerLink="/createPlane" class="button">Add Plane</a>
+    </div>    

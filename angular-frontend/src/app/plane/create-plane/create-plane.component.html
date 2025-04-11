@@ -1,0 +1,28 @@
+<!--<pre>{{ pilot | json }} </pre> Debug-->
+<h1>Create Plane</h1>
+<div class="form-container">
+    <form #planeForm="ngForm" (ngSubmit)="createPlane()">
+        <!-- Model ID, choose from preset options -->
+        <div class="form-field"> 
+        <label for="modelID">Model ID:</label>
+        <select id="modelID" [(ngModel)]="plane.modelID" name="modelID" required>
+          <option value="1">1 - Rust Bucket 687</option>
+          <option value="2">2 - Model 10A</option>
+          <option value="3">3 - Model 20B</option>
+        </select>
+        </div>
+    
+        <!-- Hours Flown, make sure number and has min value 0 -->
+        <div class="form-field">
+        <label for="hrs_flown">Total hours flown:</label>
+        <input type="number" id="hrs_flown" [(ngModel)]="plane.hrs_flown" name="hrs_flown" min="0" required/>
+        </div>
+
+        <div class="form-actions">
+            <!-- Update Button -->
+            <button type="submit" [disabled]="!planeForm.valid">Add</button>
+    
+          </div>
+    </form>
+    
+</div>
