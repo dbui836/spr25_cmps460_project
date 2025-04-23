@@ -1,0 +1,55 @@
+<!--<pre>{{ flight | json }} </pre> Debug-->
+<h1>Create Flight</h1>
+<div class="form-container">
+    <form #flightForm="ngForm" (ngSubmit)="createFlight()">
+
+        <!-- Flight source, string -->
+        <div class="form-field"> 
+        <label for="scr">Source:</label>
+        <input type="text" id="scr" [(ngModel)]="flight.scr" name="scr" required/>
+        </div>
+
+        <!-- Flight destination, string -->
+        <div class="form-field"> 
+        <label for="dest">Destination:</label>
+        <input type="text" id="dest" [(ngModel)]="flight.dest" name="dest" required/>
+        </div>
+
+        <!-- Plane ID, int -->
+        <div class="form-field"> 
+            <label for="planeID">Plane ID:</label>
+            <select id="planeID" [(ngModel)]="flight.planeID" name="planeID" (change) = "getValidPilots()" required>
+            <option *ngFor="let planeID of planeIDs" [value]="planeID">
+                {{ planeID }}
+            </option>
+            </select>
+        </div>
+
+        <!-- Primary pilot ID -->
+        <div class="form-field"> 
+            <label for="plt1_ID">Primary ID:</label>
+            <select id="plt1_ID" [(ngModel)]="flight.plt1_ID" name="plt1_ID" required>
+            <option *ngFor="let pilotId of validPilots" [value]="pilotId">
+                {{ pilotId }}
+            </option>
+            </select>
+        </div>
+
+        <!-- Co-pilot ID -->
+        <div class="form-field"> 
+            <label for="plt2_ID">Co-pilot ID:</label>
+            <select id="plt2_ID" [(ngModel)]="flight.plt2_ID" name="plt2_ID"required>
+            <option *ngFor="let pilotId of validPilots" [value]="pilotId">
+                {{ pilotId }}
+            </option>
+            </select>
+        </div>
+        
+        <div class="form-actions">
+            <!-- Update Button -->
+            <button type="submit" [disabled]="!flightForm.valid">Add</button>
+    
+          </div>
+    </form>
+    
+</div>

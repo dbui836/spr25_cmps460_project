@@ -8,6 +8,8 @@ import { PlaneModelPageComponent } from './planeModel/plane-model-page/plane-mod
 import { CreatePlaneModelComponent } from './planeModel/create-plane-model/create-plane-model.component';
 import { PlanePageComponent } from './plane/plane-page/plane-page.component';
 import { CreatePlaneComponent } from './plane/create-plane/create-plane.component';
+import { FlightPageComponent } from './flight/flight-page/flight-page.component';
+import { CreateFlightComponent } from './flight/create-flight/create-flight.component';
 
 export const routes: Routes = [
     {
@@ -45,5 +47,13 @@ export const routes: Routes = [
     {
         path: 'createPlane',
         component: CreatePlaneComponent
+    },
+    {
+        path: 'flights',
+        component: FlightPageComponent
+    },
+    {
+        path: 'createFlight',
+        component: CreateFlightComponent
     }
 ];

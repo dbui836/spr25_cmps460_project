@@ -1,0 +1,41 @@
+<div class="table-container">
+    <!--Basic Flight Display Table -->
+    <table border='1'>
+        <thead>
+            <tr>
+                <!--Set up table headers -->
+                <th>ID</th>
+                <th>Source</th>
+                <th>Destination</th>
+                <th>Plane ID</th>
+                <th>Primary Pilot ID</th>
+                <th>Co-Pilot ID</th>
+            </tr>
+        </thead>
+    
+        
+            <tbody>
+                <!--Loop threw pilot row by row -->
+                <tr *ngFor="let flight of flights" 
+                (click)="selectFlight(flight.flightID)" 
+                [ngClass]="{'selected-row': selectedFlightID === flight.flightID}">
+    
+                    <td>{{flight.flightID}}</td>
+                    <td>{{flight.scr}}</td>
+                    <td>{{flight.dest}}</td>
+                    <td>{{flight.planeID}}</td>
+                    <td>{{flight.plt1_ID}}</td>
+                    <td>{{flight.plt2_ID}}</td>
+                </tr>
+            </tbody>
+        
+    </table>
+    </div>
+    <br>
+
+    
+    <!--Create new pilot to add to table-->
+    <div class="button-container">
+        <a routerLink="/createFlight" class="button">Add Flight</a>
+    </div>
+    

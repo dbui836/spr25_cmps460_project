@@ -1,0 +1,6 @@
+
+<!--Table and form side by side-->
+<div class="container">
+    <app-display-flight (curr_flight)="OnFlightSelected($event)" [updateTable]="change"/>
+    <app-edit-delete-flight (tableChanged)="OnTableChange($event)" [edit_delete_flightID]="selectedFlightID" />
+</div>

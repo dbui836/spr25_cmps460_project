@@ -1,0 +1,63 @@
+<!-- Update Flight Form -->
+
+<!--<pre>{{ flight | json }}</pre>  
+<pre>{{ validPilots | json }}</pre>-->  
+<div class="form-container">
+    <form #flightForm="ngForm" (ngSubmit)="updateFlight()">
+      <div *ngIf="flight">
+        <!-- Flight ID, int (CAN'T CHANGE) -->
+        <div class="form-field"> 
+        <label for="flightID">Flight ID:</label>
+        <input type="text" id="flightID" [(ngModel)]="flight.flightID" name="flightID" disabled />
+        </div>
+    
+        <!-- Flight source, string -->
+        <div class="form-field"> 
+        <label for="scr">Source:</label>
+        <input type="text" id="scr" [(ngModel)]="flight.scr" name="scr" required/>
+        </div>
+    
+        <!-- Flight destination, string -->
+        <div class="form-field"> 
+        <label for="dest">Destination:</label>
+        <input type="text" id="dest" [(ngModel)]="flight.dest" name="dest"required/>
+        </div>
+    
+        <!-- Plane ID, int (CAN'T CHANGE) -->
+        <div class="form-field"> 
+            <label for="planeID">Plane ID:</label>
+            <input type="text" id="planeID" [(ngModel)]="flight.planeID" name="planeID" disabled />
+        </div>
+    
+        <!-- Primary pilot ID -->
+        <div class="form-field"> 
+            <label for="plt1_ID">Primary ID:</label>
+            <select id="plt1_ID" [(ngModel)]="flight.plt1_ID" name="plt1_ID" required>
+              <option *ngFor="let pilotId of validPilots" [value]="pilotId">
+                {{ pilotId }}
+              </option>
+            </select>
+        </div>
+
+        <!-- Co-pilot ID -->
+        <div class="form-field"> 
+            <label for="plt2_ID">Co-pilot ID:</label>
+            <select id="plt2_ID" [(ngModel)]="flight.plt2_ID" name="plt2_ID"required>
+              <option *ngFor="let pilotId of validPilots" [value]="pilotId">
+                {{ pilotId }}
+              </option>
+            </select>
+        </div>
+    
+        
+        <div class="form-actions">
+            <!-- Update Button -->
+            <button type="submit" [disabled]="!flight.flightID || !flightForm.valid">Update</button>
+    
+            <!-- Delete Button -->
+            <button type="button" [disabled]="!flight.flightID" (click)="deleteFlight()">Delete</button>
+          </div>
+      </div>
+    </form>
+    
+    </div>

@@ -24,7 +24,7 @@ if (isset($data['pltID']) && isset($data['plt_fname']) && isset($data['plt_lname
     $sql = "UPDATE pilot SET plt_fname = ?, plt_lname = ?, plt_location = ?, license = ?, consec_hrs_flown = ? WHERE pltID = ?";
 
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("ssssii", $plt_fname, $plt_lname, $license, $plt_location, $consec_hrs_flown, $pltID);
+    $stmt->bind_param("ssssii", $plt_fname, $plt_lname, $plt_location, $license, $consec_hrs_flown, $pltID);
 
     if ($stmt->execute() === FALSE) {
         echo json_encode(['error' => 'Error updating pilot']);
