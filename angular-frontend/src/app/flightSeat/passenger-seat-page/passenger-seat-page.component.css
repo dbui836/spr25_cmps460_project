@@ -1,0 +1,106 @@
+h1{
+    text-align: center;
+}
+
+.filter-container {
+    margin-left: 200px;
+    display: flex;
+    justify-content: space-between; 
+    gap: 20px;
+    align-items: center; 
+  }
+
+
+.table-container {
+    max-height: 414px;  
+    overflow: auto;   
+    border: 1px solid black; 
+    width: 77%; 
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: auto;
+          
+}
+
+/*Styling for table header*/
+thead {
+    background-color: lightblue; 
+    color: black; 
+    font-size: 18px;
+    font-weight: bold;
+    position: sticky !important;      
+    top: 0 !important;               
+    z-index: 1 !important;  
+}
+
+/* Styling for selecting a row */
+.selected-row {
+    background-color: #c8e6c9 !important; 
+    cursor: pointer;           
+}
+
+
+tbody tr {
+    background-color: whitesmoke;
+}
+
+/* Styling for table*/
+table {
+    margin-left: auto;
+    margin-right: 0;
+    margin-top: auto;
+    border-collapse: separate;
+    border-spacing: 1; 
+    width: 100%; 
+    table-layout: fixed;
+    
+}
+
+th {
+    position: sticky !important;      
+    top: 2 !important;               
+    z-index: 4;          
+    background-color: rgb(160, 160, 160); ; 
+    border: 1px solid black;  
+    box-sizing: border-box;
+    text-align: center; 
+    padding: 9px;
+}
+
+td {
+    padding: 9px;
+    text-align: center;  
+    border: 1px solid black; 
+}
+
+/* Styling for button */
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: rgb(255, 234, 118);
+    color: black;
+    text-decoration: none;  
+    border-radius: 5px;
+    text-align: center;
+    cursor: pointer;
+    font-size: 16px;
+    border: 1px solid black;
+    border-radius: 9px;
+}
+
+.button:hover {
+    background-color: rgb(255, 225, 52);
+    transform: scale(1.05);   
+}
+  
+.button:active {
+    background-color: rgb(231, 200, 0);
+    transform: scale(0.95);
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    width: 100%;
+}

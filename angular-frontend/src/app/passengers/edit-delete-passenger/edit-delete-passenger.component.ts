@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { PassengerService } from '../passenger.service';
 import { SimpleChanges } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-edit-delete-passenger',
@@ -19,7 +20,7 @@ export class EditDeletePassengerComponent {
     @Output() tableChanged = new EventEmitter<number>(); // to emit count++ for display when table changed
   
   
-    constructor(private passengerService: PassengerService) { }
+    constructor(private passengerService: PassengerService, private router: Router) { }
 
 
     // when edit_delete_pilotID changes, update the form
@@ -72,6 +73,12 @@ export class EditDeletePassengerComponent {
           alert('Error cannot delete passenger');
         }
       );
+    }
+  }
+
+  goToMySeats(): void{
+    if (this.edit_delete_passID !== null){
+      this.router.navigate(['/mySeats', this.edit_delete_passID]);
     }
   }
 }

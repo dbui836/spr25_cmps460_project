@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FlightService } from '../flight.service';
 import { SimpleChanges } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-edit-delete-flight',
@@ -21,7 +22,7 @@ export class EditDeleteFlightComponent {
     @Output() tableChanged = new EventEmitter<number>(); // to emit count++ for display when table changed
   
   
-    constructor(private flightService: FlightService) { }
+    constructor(private flightService: FlightService, private router: Router) { }
   
   
   
@@ -87,6 +88,12 @@ export class EditDeleteFlightComponent {
         response => {this.validPilots = response;}
       );
 
+    }
+
+    goToSeats(): void{
+      if (this.flight.flightID !== null){
+        this.router.navigate(['/flightSeats', this.flight.flightID]);
+      }
     }
 
 }

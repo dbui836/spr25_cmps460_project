@@ -1,9 +1,9 @@
 
-<!--<pre>{{ bookingInfo | json }} </pre> Debug-->
+<!--<pre>
 {{ bookingInfo | json }}
 {{ validPass | json }}
 {{ avalFlights | json }}
-{{ avalSeats | json }}
+{{ avalSeats | json }}</pre> Debug-->
 <h1>Book a Flight</h1>
 <div class="form-container">
     <form #bookForm="ngForm" (ngSubmit)="bookFlight()">

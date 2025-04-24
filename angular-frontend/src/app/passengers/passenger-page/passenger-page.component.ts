@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { DisplayPassengerComponent } from '../display-passenger/display-passenger.component';
 import { EditDeletePassengerComponent } from '../edit-delete-passenger/edit-delete-passenger.component';
 import { RouterLink } from '@angular/router';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -13,6 +14,8 @@ import { RouterLink } from '@angular/router';
 export class PassengerPageComponent {
   selectedPassengerID: number | null = null; // get from displayPilot Component to pass to edit-delete-pilot component
   change: number | null = null;
+
+  constructor(private router: Router) {}
   
   OnPassengerSelected(pilotID: number): void {
     this.selectedPassengerID = pilotID; 
@@ -21,5 +24,4 @@ export class PassengerPageComponent {
   OnTableChange(count: number): void{
     this.change = count;
   }
-
 }

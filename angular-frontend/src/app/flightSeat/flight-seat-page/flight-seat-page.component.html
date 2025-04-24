@@ -1,0 +1,30 @@
+<h1>Flight Seats for Flight ID: {{id}}</h1>
+<div class="table-container">
+    <!--Basic Seat Display Table -->
+    <table border='1'>
+        <thead>
+            <tr>
+                <!--Set up table headers -->
+                <th>Seat ID</th>
+                <th>Passenger ID</th>
+            </tr>
+        </thead>
+    
+        
+            <tbody>
+                <!--Loop threw pilot row by row -->
+                <tr *ngFor="let seat of seats">
+                    <td>{{seat.seatID}}</td>
+                    <td>{{seat.passID}}</td>
+                </tr>
+            </tbody>
+        
+    </table>
+    </div>
+    <br>
+
+    
+    <!--Back button-->
+    <div class="button-container">
+        <a routerLink="/flights" class="button">Back</a>
+    </div>
