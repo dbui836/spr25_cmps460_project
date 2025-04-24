@@ -10,6 +10,7 @@ import { PlanePageComponent } from './plane/plane-page/plane-page.component';
 import { CreatePlaneComponent } from './plane/create-plane/create-plane.component';
 import { FlightPageComponent } from './flight/flight-page/flight-page.component';
 import { CreateFlightComponent } from './flight/create-flight/create-flight.component';
+import { BookAFlightPageComponent } from './book_a_flight/book-a-flight-page/book-a-flight-page.component';
 
 export const routes: Routes = [
     {
@@ -55,5 +56,10 @@ export const routes: Routes = [
     {
         path: 'createFlight',
         component: CreateFlightComponent
+    },
+    {
+        path: 'book_a_flight',
+        component: BookAFlightPageComponent
+
     }
 ];

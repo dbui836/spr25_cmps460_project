@@ -24,7 +24,7 @@ if ($result0->num_rows > 0){
     echo json_encode($planes);
 
 } else {
-    echo json_encode([1]);
+    echo json_encode([]);
 }
 
 # Close connections

@@ -1,0 +1,59 @@
+
+<!--<pre>{{ bookingInfo | json }} </pre> Debug-->
+{{ bookingInfo | json }}
+{{ validPass | json }}
+{{ avalFlights | json }}
+{{ avalSeats | json }}
+<h1>Book a Flight</h1>
+<div class="form-container">
+    <form #bookForm="ngForm" (ngSubmit)="bookFlight()">
+
+        <!-- Passenger id -->
+        <div class="form-field"> 
+            <label for="passID">Passenger ID:</label>
+            <input type="number" id="passID" [(ngModel)]="bookingInfo.passID" name="passID" min="1" (change) = "checkPassID()" required/>
+        </div>
+
+        <!-- Source string -->
+        <div class="form-field"> 
+            <label for="src">Source:</label>
+            <input type="text" id="src" [(ngModel)]="bookingInfo.src" name="src" (blur) = "onSrcDestChange()" required/>
+        </div>
+    
+        <!-- Destination string -->
+        <div class="form-field"> 
+            <label for="dest">Destination:</label>
+            <input type="text" id="dest" [(ngModel)]="bookingInfo.dest" name="dest" (blur) = "onSrcDestChange()" required/>
+        </div>
+    
+        <!-- Available flights based on src and dest -->
+        <div class="form-field"> 
+            <label for="flights">Flights:</label>
+            <select id="flights" [(ngModel)]="bookingInfo.flightID" name="flights" (ngModelChange) = "onFlightChange()" required>
+            <option *ngFor="let flightID of avalFlights" [value]="flightID">
+                {{ flightID }}
+            </option>
+            </select>
+        </div>
+    
+        <!-- Available flights based on src and dest -->
+        <div class="form-field"> 
+            <label for="seats">Seats:</label>
+            <select id="seats" [(ngModel)]="bookingInfo.seat" name="seats" required>
+            <option *ngFor="let seatID of avalSeats" [value]="seatID">
+                {{ seatID }}
+            </option>
+            </select>
+        </div>
+
+        
+        <div class="form-actions">
+            <!-- Update Button -->
+            <button type="submit" [disabled]="!bookForm.valid">Book</button>
+    
+        </div>
+    </form>
+    
+</div>
+
+<div class = "invalid" *ngIf="!validPass"><br>Invalid passenger id</div>
