@@ -1,1 +1,15 @@
 <h1>Welcome to UL Airlines!</h1>
+
+<div class="login">
+    @if (this.authService.isAuthenticated()) {
+        <p>You are logged in as '{{ this.authService.currentUser }}'</p>
+        <button (click)="submitLogout()">Sign out</button>
+    }
+    @else {
+        <label for="username">Username</label><br>
+        <input type="text" id="username" name="username" [formControl]="username"><br><br>
+        <label for="password">Password</label><br>
+        <input type="text" id="password" name="password" [formControl]="password"><br><br>
+        <button (click)="submitLogin()">Login</button>
+    }
+</div>
