@@ -1,4 +1,4 @@
 <div class="container">
     <app-display-plane (curr_plane)="OnPlaneSelected($event)" [updateTable]="change" />
-    <app-edit-delete-plane />
+    <app-edit-delete-plane (tableChanged)="OnTableChange($event)" [edit_delete_planeID]="selectedPlaneID" />
 </div>
