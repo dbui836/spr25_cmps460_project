@@ -5,16 +5,17 @@ header("Content-Type: application/json"); // for json encoding
 include("../connect_db.php");
 
 
-
+// Set up license variables
 $student = "Student";
 $recreational = "Recreational";
 $private = "Private";
 $commercial = "Commercial";
 $airline_transport = "Airline Transport";
 
-$sql0 = "SELECT reqCert from PlaneModel WHERE modelID = ?";
+// Query: Get the required cert for the given plane model
+$sql0 = "SELECT reqCert FROM PlaneModel WHERE modelID = ?";
 $stmt0 = $conn->prepare($sql0);
-$planeID = (int) $_GET['planeID'];
+$planeID = (int)$_GET['planeID'];
 $location = $_GET['scr'];
 
 $stmt0->bind_param("i", $planeID);
@@ -26,6 +27,7 @@ if ($result0->num_rows > 0 && $location !== "") {
     $license = $row0['reqCert'];
 
     if ($license === "Student"){
+        // Query: Get pilots located at the same location of the flight that have under a certain amount of hrs
         $sql = "SELECT pltID from pilot WHERE plt_location = ? AND 160 > consec_hrs_flown";
         $stmt = $conn->prepare($sql);
         $stmt->bind_param("s", $location);
@@ -61,7 +63,6 @@ if ($result0->num_rows > 0 && $location !== "") {
         while ($row = $result->fetch_assoc()){
             $pilots[] = (int)$row['pltID'];
         }
-        
         # Send data as JSON
         echo json_encode($pilots);
 

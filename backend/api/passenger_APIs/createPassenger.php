@@ -8,22 +8,20 @@ include("../connect_db.php"); // Connect to database
 
 
 
-// Get the incoming data (pilot info)
+// Get the incoming data
 $data = json_decode(file_get_contents("php://input"), true);
 
 // Check if the data has required fields
 if (isset($data['pass_fname']) && isset($data['pass_lname'])) {
     $pass_fname = $data['pass_fname'];
     $pass_lname = $data['pass_lname'];
- 
 
-    // Update the pilot in the database
+    // Query: Add new passenger to database
     $sql = "INSERT INTO Passenger (pass_fname, pass_lname)
             VALUES (?, ?)";
     
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("ss", $pass_fname, $pass_lname);
-
 
     if ($stmt->execute() === FALSE) {
         echo json_encode(['error' => 'Error adding passenger']);

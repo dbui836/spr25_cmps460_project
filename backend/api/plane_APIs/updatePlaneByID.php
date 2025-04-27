@@ -18,7 +18,7 @@ if (isset($data['planeID']) && isset($data['modelID']) && isset($data['hrs_flown
     $hrs_flown = $data['hrs_flown'];
 
     // Update the plane in the database
-    $sql = "UPDATE plane SET planeID = '$planeID', modelID = '$modelID', hrs_flown = '$hrs_flown'";
+    $sql = "UPDATE plane SET modelID = '$modelID', hrs_flown = '$hrs_flown' WHERE planeID = '$planeID'";
     
     if ($conn->query($sql) === FALSE) {
         echo json_encode(['error' => 'Error updating plane']);

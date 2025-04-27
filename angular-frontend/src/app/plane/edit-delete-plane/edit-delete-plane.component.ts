@@ -58,7 +58,7 @@ export class EditDeletePlaneComponent {
   }
 
   deletePlane(): void{
-    if (this.plane && this.plane.pltID) {
+    if (this.plane && this.plane.planeID) {
       
       this.planeService.deletePlaneByID(Number(this.plane.planeID)).subscribe(
         response => {

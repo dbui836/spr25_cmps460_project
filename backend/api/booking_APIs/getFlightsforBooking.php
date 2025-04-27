@@ -4,9 +4,7 @@ header('Access-Control-Allow-Origin: *'); // for development, angular runs on di
 header("Content-Type: application/json"); // for json encoding
 include("../connect_db.php");
 
-
-
-# Embedded sql to show Flight table
+# Query: Get flight based on source and location
 $sql = "SELECT flightID from Flight WHERE scr = ? AND dest = ?";
 
 $stmt = $conn->prepare($sql);
@@ -30,7 +28,7 @@ if ($result->num_rows > 0){
     echo json_encode([]);
 }
 
-# Close connection 
+# Close connections
 $stmt->close();
 $conn->close();
 

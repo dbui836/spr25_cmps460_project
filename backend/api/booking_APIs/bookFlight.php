@@ -15,7 +15,7 @@ if (isset($data['flightID']) && isset($data['seat']) && isset($data['passID'])) 
     $seatID = (int) $data['seat'];
     $passID = (int)$data['passID'];
 
-    // Update the flight in the database
+    // Query: Book FlightSeat to passenger
     $sql = "UPDATE FlightSeat SET passID = ? WHERE flightID = ? AND seatID = ?";
 
     $stmt = $conn->prepare($sql);

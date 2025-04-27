@@ -6,14 +6,14 @@ include("../connect_db.php");
 
 
 
-# Embedded sql to show entire passenger table
+# Query: Embedded sql to show entire passenger table
 $sql = "SELECT * from passenger";
 
 $fname = $_GET['fname'];
 $lname = $_GET['lname'];
 
-if ($fname !== "" || $lname !== ""){
-
+// For optional name searching
+if ($fname !== "" || $lname !== ""){ // if both are "", meaning no search, just show everything
     if ($fname !== ""){
         $sql .= " WHERE pass_fname = ?";
         if ($lname !== ""){
@@ -48,11 +48,10 @@ if ($result->num_rows > 0){
     # Store all passengers in array
     while ($row = $result->fetch_assoc()){
         $passengers[] = $row;
-    }
-    
+    }  
     # Send data as JSON
     echo json_encode($passengers);
-
+    
 } else {
     echo json_encode([]);
 }

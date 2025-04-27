@@ -16,10 +16,10 @@ if (isset($data['flightID']) && isset($data['scr']) && isset($data['dest']) && i
     $scr = $data['scr'];
     $dest = $data['dest'];
     $flightID = (int)$data['flightID'];
-    $plt1 = (int) $data['plt1_ID'];
+    $plt1 = (int)$data['plt1_ID'];
     $plt2 = (int)$data['plt2_ID'];
 
-    // Update the flight in the database
+    // Query: Update the flight in the database
     $sql = "UPDATE flight SET scr = ?, dest = ?, plt1_ID = ?, plt2_ID = ? WHERE flightID = ?";
 
     $stmt = $conn->prepare($sql);

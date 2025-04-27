@@ -6,8 +6,8 @@ include("../connect_db.php");
 
 
 
-# Embedded sql to show pilot table
-$sql = "SELECT * from pilot";
+# Query: Embedded sql to show pilot table
+$sql = "SELECT * FROM pilot";
 $optLicense = $_GET['license'];
 $optHrs = $_GET['hrs'];
 
@@ -17,11 +17,10 @@ if ($optLicense !== "All"){
         $optHrs = (int)$optHrs;
         $sql .= " AND ? > consec_hrs_flown";
     }
-} elseif ($optHrs !== "null"){
+}elseif ($optHrs !== "null"){
     $optHrs = (int)$optHrs;
     $sql .= " WHERE ? > consec_hrs_flown";
 }
-
 
 $stmt = $conn->prepare($sql);
 if ($optLicense !== "All"){
@@ -34,7 +33,6 @@ if ($optLicense !== "All"){
     $stmt->bind_param("i", $optHrs);
 }
 
-
 $stmt->execute();
 $result = $stmt->get_result();
 
@@ -46,7 +44,6 @@ if ($result->num_rows > 0){
     while ($row = $result->fetch_assoc()){
         $pilots[] = $row;
     }
-    
     # Send data as JSON
     echo json_encode($pilots);
 

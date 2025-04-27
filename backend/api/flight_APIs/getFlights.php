@@ -4,9 +4,7 @@ header('Access-Control-Allow-Origin: *'); // for development, angular runs on di
 header("Content-Type: application/json"); // for json encoding
 include("../connect_db.php");
 
-
-
-# Embedded sql to show Flight table
+# Query: Embedded sql to show Flight table
 $sql = "SELECT * from Flight";
 
 $stmt = $conn->prepare($sql);
@@ -17,11 +15,10 @@ $result = $stmt->get_result();
 if ($result->num_rows > 0){
     $flights = [];
 
-    # Store all pilots in array
+    # Store all flights in array
     while ($row = $result->fetch_assoc()){
         $flights[] = $row;
     }
-    
     # Send data as JSON
     echo json_encode($flights);
 

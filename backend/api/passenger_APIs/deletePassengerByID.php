@@ -12,6 +12,7 @@ include("../connect_db.php"); // Connect to database
 if (isset($_GET['id'])) {
     $passId = $_GET['id'];
 
+    // Query: Delete passenger
     $sql = "DELETE FROM passenger WHERE passID = ?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("i", $passId);
@@ -27,7 +28,7 @@ if (isset($_GET['id'])) {
     }
 
     $stmt->close();
-} else {
+}else{
     echo json_encode(['error' => 'No passenger ID provided']);
 }
 

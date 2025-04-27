@@ -7,7 +7,6 @@ header('Access-Control-Allow-Methods: GET, POST, PUT, DELETE'); // Allow methods
 include("../connect_db.php"); // Connect to database
 
 
-
 // Get the incoming data (pilot info)
 $data = json_decode(file_get_contents("php://input"), true);
 
@@ -19,15 +18,14 @@ if (isset($data['plt_fname']) && isset($data['plt_lname']) && isset($data['licen
     $license = $data['license'];
     $consec_hrs_flown = (int)$data['consec_hrs_flown'];
 
-    // Update the pilot in the database
+    // Query: Update the pilot in the database
     $sql = "INSERT INTO Pilot (plt_fname, plt_lname, license, plt_location, consec_hrs_flown)
             VALUES (?, ?, ?, ?, ?)";
     
-
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("ssssi", $plt_fname, $plt_lname, $license, $plt_location, $consec_hrs_flown);
 
-    if ($stmt->execute() === FALSE) {
+    if ($stmt->execute() === false) {
         echo json_encode(['error' => 'Error adding pilot']);
     }
     $stmt->close();
@@ -36,5 +34,4 @@ if (isset($data['plt_fname']) && isset($data['plt_lname']) && isset($data['licen
 }
 
 $conn->close();
-
 ?>

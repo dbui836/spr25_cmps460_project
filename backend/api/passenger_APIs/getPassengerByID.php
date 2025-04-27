@@ -10,6 +10,7 @@ include("../connect_db.php");
 if (isset($_GET['id'])) {
     $passId = $_GET['id'];
 
+    // Query: Get passenger by id
     $sql = "SELECT * FROM passenger WHERE passID = ?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("i", $passId);
@@ -22,8 +23,8 @@ if (isset($_GET['id'])) {
     }
 
     if ($result->num_rows > 0) {
-        $pilot = $result->fetch_assoc(); // should only have 1 pilot per id
-        echo json_encode($pilot);  
+        $passenger = $result->fetch_assoc(); // should only have 1 passenger per id
+        echo json_encode($passenger);  
     } else {
         echo json_encode(['error' => 'Passenger not found']);
     }

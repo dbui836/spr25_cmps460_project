@@ -8,7 +8,7 @@ include("../connect_db.php"); // Connect to database
 
 
 
-// Get the incoming data (pilot info)
+// Get the incoming data
 $data = json_decode(file_get_contents("php://input"), true);
 
 // Check if the data has required fields
@@ -17,19 +17,17 @@ if (isset($data['passID']) && isset($data['pass_fname']) && isset($data['pass_ln
     $pass_fname = $data['pass_fname'];
     $pass_lname = $data['pass_lname'];
 
-
-    // Update the passenger in the database
+    // Query: Update the passenger in the database
     $sql = "UPDATE passenger SET pass_fname = ?, pass_lname = ? WHERE passID = ?";
     
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("ssi", $pass_fname, $pass_lname, $passID);
 
-
     if ($stmt->execute() === FALSE) {
-        echo json_encode(['error' => 'Error updating pilot']);
+        echo json_encode(['error' => 'Error updating passenger']);
     }
     $stmt->close();
-} else {
+} else{
     echo json_encode(['error' => 'Invalid data']);
 }
 

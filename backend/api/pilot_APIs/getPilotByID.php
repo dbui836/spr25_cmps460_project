@@ -4,12 +4,11 @@ header('Access-Control-Allow-Origin: *'); // for development, angular runs on di
 header("Content-Type: application/json"); // for json encoding
 include("../connect_db.php");
 
-
-
 // Check if id is set in the url
 if (isset($_GET['id'])) {
-    $pilotId = (int) $_GET['id'];
+    $pilotId = (int)$_GET['id'];
 
+    // Query: Get pilot by id
     $sql = "SELECT * FROM pilot WHERE pltID = ?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("i", $pilotId);
@@ -27,9 +26,9 @@ if (isset($_GET['id'])) {
     } else {
         echo json_encode(['error' => 'Pilot not found']);
     }
-
     $stmt->close();
-} else {
+
+}else{
     echo json_encode(['error' => 'No pilot ID provided']);
 }
 

@@ -6,7 +6,7 @@ include("../connect_db.php");
 
 
 
-# Embedded sql to show Flight table
+# Query: Embedded sql to show Flight table
 $sql = "SELECT seatID, passID from FlightSeat WHERE flightID = ?";
 
 $stmt = $conn->prepare($sql);
@@ -23,16 +23,14 @@ if ($result->num_rows > 0){
     while ($row = $result->fetch_assoc()){
         $seats[] = $row;
     }
-    
     # Send data as JSON
     echo json_encode($seats);
 
-} else {
+}else{
     echo json_encode([]);
 }
 
 # Close connection 
 $stmt->close();
 $conn->close();
-
 ?>

@@ -10,8 +10,9 @@ include("../connect_db.php"); // Connect to database
 
 // Check if id is set in the url
 if (isset($_GET['id'])) {
-    $pilotId = (int) $_GET['id'];
+    $pilotId = (int)$_GET['id'];
 
+    // Query: Delete piliot by id
     $sql = "DELETE FROM pilot WHERE pltID = ?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("i", $pilotId);
@@ -19,15 +20,15 @@ if (isset($_GET['id'])) {
 
     $result = $stmt->get_result();
 
-    if ($result === false) {
+    if ($result === false){
         echo json_encode(['error' => 'Query failed: ' . $conn->error]);
     }
     else{
         echo json_encode(['message' => 'Deletion successful']);
     }
-
     $stmt->close();
-} else {
+
+}else{
     echo json_encode(['error' => 'No pilot ID provided']);
 }
 

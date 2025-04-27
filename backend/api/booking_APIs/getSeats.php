@@ -6,8 +6,8 @@ include("../connect_db.php");
 
 
 
-# Embedded sql to show available seats
-$sql = "SELECT seatID from FlightSeat WHERE flightID = ? AND passID IS NULL";
+# Query: Embedded sql to show available seats
+$sql = "SELECT seatID FROM FlightSeat WHERE flightID = ? AND passID IS NULL";
 
 $stmt = $conn->prepare($sql);
 
@@ -29,7 +29,7 @@ if ($result->num_rows > 0){
     echo json_encode($seats);
 
 } else {
-    echo json_encode([49]);
+    echo json_encode([]);
 }
 
 # Close connection 
