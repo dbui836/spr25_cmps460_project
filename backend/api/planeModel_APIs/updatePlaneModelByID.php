@@ -13,22 +13,22 @@ $data = json_decode(file_get_contents("php://input"), true);
 
 // Check if the data has required fields
 if (isset($data['modelID']) && isset($data['modelName']) && isset($data['reqCert']) && isset($data['max_capacity'])) {
-    $modelID = (int) $data['modelID'];
+    $modelID = (int)$data['modelID'];
     $modelName = $data['modelName'];
     $reqCert = $data['reqCert'];
-    $max_capacity = (int) $data['max_capacity'];
+    $max_capacity = (int)$data['max_capacity'];
 
-    // Update the plane model in the database
+    // Query: Update the plane model in the database
     $sql = "UPDATE PlaneModel SET modelName = ?, reqCert = ?, max_capacity = ? WHERE modelID = ?";
 
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("ssii", $modelName, $reqCert, $max_capacity, $modelID);
 
-    if ($stmt->execute() === FALSE) {
+    if ($stmt->execute() === FALSE){
         echo json_encode(['error' => 'Error updating plane model']);
     }
     $stmt->close();
-} else {
+}else{
     echo json_encode(['error' => 'Invalid data']);
 }
 

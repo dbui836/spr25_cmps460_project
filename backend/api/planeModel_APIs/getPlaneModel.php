@@ -6,7 +6,7 @@ include("../connect_db.php");
 
 
 
-# Embedded sql to show pilot table
+#Query: Embedded sql to show plane model table
 $sql = "SELECT * from PlaneModel";
 $stmt = $conn->prepare($sql);
 $stmt->execute();
@@ -20,11 +20,10 @@ if ($result->num_rows > 0){
     while ($row = $result->fetch_assoc()){
         $models[] = $row;
     }
-    
     # Send data as JSON
     echo json_encode($models);
 
-} else {
+}else{
     echo json_encode([]);
 }
 

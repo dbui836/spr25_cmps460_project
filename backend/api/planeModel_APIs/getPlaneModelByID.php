@@ -8,8 +8,9 @@ include("../connect_db.php");
 
 // Check if id is set in the url
 if (isset($_GET['id'])) {
-    $modelId = (int) $_GET['id'];
+    $modelId = (int)$_GET['id'];
 
+    // Query: Get planeModel by id
     $sql = "SELECT * FROM PlaneModel WHERE modelID = ?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("i", $modelId);
@@ -17,19 +18,19 @@ if (isset($_GET['id'])) {
 
     $result = $stmt->get_result();
 
-    if ($result === false) {
+    if ($result ===false) {
         echo json_encode(['error' => 'Query failed: ' . $conn->error]);
     }
 
     if ($result->num_rows > 0) {
-        $pilot = $result->fetch_assoc(); // should only have 1 pilot per id
-        echo json_encode($pilot);  
-    } else {
+        $models = $result->fetch_assoc(); // should only have 1 model per id
+        echo json_encode($models);  
+    }else{
         echo json_encode(['error' => 'Plane Model not found']);
     }
 
     $stmt->close();
-} else {
+}else{
     echo json_encode(['error' => 'No plane model ID provided']);
 }
 

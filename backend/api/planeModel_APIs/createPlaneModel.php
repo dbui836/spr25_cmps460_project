@@ -8,16 +8,16 @@ include("../connect_db.php"); // Connect to database
 
 
 
-// Get the incoming data (pilot info)
+// Get the incoming data
 $data = json_decode(file_get_contents("php://input"), true);
 
 // Check if the data has required fields
 if (isset($data['modelName']) && isset($data['reqCert']) && isset($data['max_capacity'])) {
     $modelName = $data['modelName'];
     $reqCert = $data['reqCert'];
-    $max_capacity = (int) $data['max_capacity'];
+    $max_capacity = (int)$data['max_capacity'];
 
-    // Add plane model in the database
+    // Query: Add plane model in the database
     $sql = "INSERT INTO PlaneModel (modelName, reqCert, max_capacity)
             VALUES (?, ?, ?)";
     

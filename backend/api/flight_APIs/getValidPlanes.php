@@ -5,7 +5,7 @@ header("Content-Type: application/json"); // for json encoding
 include("../connect_db.php");
 
 // Query: Get valid planes for Flight create
-$sql0 = "SELECT planeID FROM Plane WHERE hrs_flown < 100";
+$sql0 = "SELECT planeID FROM Plane WHERE hrs_flown < 600";
 $stmt0 = $conn->prepare($sql0);
 $stmt0->execute();
 $result0 = $stmt0->get_result();

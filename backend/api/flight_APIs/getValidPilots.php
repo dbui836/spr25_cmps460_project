@@ -28,26 +28,26 @@ if ($result0->num_rows > 0 && $location !== "") {
 
     if ($license === "Student"){
         // Query: Get pilots located at the same location of the flight that have under a certain amount of hrs
-        $sql = "SELECT pltID from pilot WHERE plt_location = ? AND 160 > consec_hrs_flown";
+        $sql = "SELECT pltID from pilot WHERE plt_location = ? AND 16 > consec_hrs_flown";
         $stmt = $conn->prepare($sql);
         $stmt->bind_param("s", $location);
 
     } elseif ($license === "Recreational"){
-        $sql = "SELECT pltID from pilot WHERE plt_location = ? AND 160 > consec_hrs_flown AND  (license = ? OR license = ? OR license = ? OR license = ?)";
+        $sql = "SELECT pltID from pilot WHERE plt_location = ? AND 16 > consec_hrs_flown AND  (license = ? OR license = ? OR license = ? OR license = ?)";
         $stmt = $conn->prepare($sql);
         $stmt->bind_param("sssss", $location, $license, $private, $commercial, $airline_transport); 
 
     } elseif ($license === "Private"){
-        $sql = "SELECT pltID from pilot WHERE plt_location = ? AND 160 > consec_hrs_flown AND  (license = ? OR license = ? OR license = ?)";
+        $sql = "SELECT pltID from pilot WHERE plt_location = ? AND 16 > consec_hrs_flown AND  (license = ? OR license = ? OR license = ?)";
         $stmt = $conn->prepare($sql);
         $stmt->bind_param("ssss",$location, $license, $commercial, $airline_transport); 
 
     } elseif ($license === "Commercial"){
-        $sql = "SELECT pltID from pilot WHERE plt_location = ? AND 160 > consec_hrs_flown AND  (license = ? OR license = ?)";
+        $sql = "SELECT pltID from pilot WHERE plt_location = ? AND 16 > consec_hrs_flown AND  (license = ? OR license = ?)";
         $stmt = $conn->prepare($sql);
         $stmt->bind_param("sss",$location, $license, $airline_transport); 
     } else {
-        $sql = "SELECT pltID from pilot WHERE plt_location = ? AND 160 > consec_hrs_flown AND  (license = ?)";
+        $sql = "SELECT pltID from pilot WHERE plt_location = ? AND 16 > consec_hrs_flown AND  (license = ?)";
         $stmt = $conn->prepare($sql);
         $stmt->bind_param("ss", $location, $license); 
     }

@@ -10,8 +10,9 @@ include("../connect_db.php"); // Connect to database
 
 // Check if id is set in the url
 if (isset($_GET['id'])) {
-    $modelId = (int) $_GET['id'];
+    $modelId = (int)$_GET['id'];
 
+    // Query: Delete plane model by id
     $sql = "DELETE FROM PlaneModel WHERE modelID = ?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("i", $modelId);
@@ -25,9 +26,8 @@ if (isset($_GET['id'])) {
     else{
         echo json_encode(['message' => 'Deletion successful']);
     }
-
     $stmt->close();
-} else {
+}else {
     echo json_encode(['error' => 'No plane model ID provided']);
 }
 
